@@ -1,0 +1,367 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-inner">
+        <h1 class="text-white mb-4 animate-on-scroll" data-animation="fade-in">
+            <span class="text-primary">Save Lives</span> Through 
+            <span class="typing-text">Organ & Blood Donation</span>
+        </h1>
+        <p class="text-light mb-5 animate-on-scroll" data-animation="slide-in-left">
+            Join our mission to save lives by donating organs and blood. Your one donation can save multiple lives and bring hope to those in need.
+        </p>
+        <div class="d-flex justify-content-center flex-wrap gap-3 animate-on-scroll" data-animation="slide-in-right">
+            {% if not current_user.is_authenticated %}
+                <a href="{{ url_for('auth.register') }}" class="btn btn-primary btn-lg hero-btn">
+                    <i class="fas fa-user-plus me-2"></i>Register Now
+                </a>
+                <a href="{{ url_for('auth.login') }}" class="btn btn-outline-light btn-lg">
+                    <i class="fas fa-sign-in-alt me-2"></i>Login
+                </a>
+            {% else %}
+                {% if current_user.get_role() == 'user' %}
+                    <a href="{{ url_for('user.donate_organ') }}" class="btn btn-primary btn-lg me-3">
+                        <i class="fas fa-hand-holding-heart me-2"></i>Donate Organ
+                    </a>
+                    <a href="{{ url_for('user.donate_blood') }}" class="btn btn-danger btn-lg me-3">
+                        <i class="fas fa-tint me-2"></i>Donate Blood
+                    </a>
+                    <a href="{{ url_for('user.dashboard') }}" class="btn btn-outline-light btn-lg">
+                        <i class="fas fa-tachometer-alt me-2"></i>Dashboard
+                    </a>
+                {% elif current_user.get_role() == 'doctor' %}
+                    <a href="{{ url_for('doctor.dashboard') }}" class="btn btn-info btn-lg">
+                        <i class="fas fa-stethoscope me-2"></i>Doctor Dashboard
+                    </a>
+                {% elif current_user.get_role() == 'admin' %}
+                    <a href="{{ url_for('admin.dashboard') }}" class="btn btn-info btn-lg">
+                        <i class="fas fa-user-shield me-2"></i>Admin Dashboard
+                    </a>
+                {% endif %}
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="container py-5" id="features">
+    <div class="text-center mb-5">
+        <h2 class="display-4 mb-3">Our <span class="text-primary">Features</span></h2>
+        <p class="lead">We provide a comprehensive platform for organ and blood donation</p>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-md-4 animate-on-scroll" data-animation="bounce-in">
+            <div class="card h-100 bg-dark floating-card">
+                <div class="card-body text-center">
+                    <i class="fas fa-heartbeat fa-3x text-primary mb-3 heart-icon"></i>
+                    <h3 class="card-title">Organ Donation</h3>
+                    <p class="card-text">Register to donate organs and help save lives. Your decision to donate can save up to 8 lives.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4 animate-on-scroll" data-animation="bounce-in">
+            <div class="card h-100 bg-dark floating-card">
+                <div class="card-body text-center">
+                    <i class="fas fa-tint fa-3x text-danger mb-3"></i>
+                    <h3 class="card-title">Blood Donation</h3>
+                    <p class="card-text">Donate blood and help those in need. Each donation can save up to 3 lives.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4 animate-on-scroll" data-animation="bounce-in">
+            <div class="card h-100 bg-dark floating-card">
+                <div class="card-body text-center">
+                    <i class="fas fa-user-md fa-3x text-info mb-3"></i>
+                    <h3 class="card-title">Doctor Assignment</h3>
+                    <p class="card-text">Our platform connects donors with specialized doctors for safe donation procedures.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4 animate-on-scroll" data-animation="bounce-in">
+            <div class="card h-100 bg-dark floating-card">
+                <div class="card-body text-center">
+                    <i class="fas fa-hospital fa-3x text-success mb-3"></i>
+                    <h3 class="card-title">Hospital Network</h3>
+                    <p class="card-text">We partner with top hospitals to ensure high-quality care for donors and recipients.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4 animate-on-scroll" data-animation="bounce-in">
+            <div class="card h-100 bg-dark floating-card">
+                <div class="card-body text-center">
+                    <i class="fas fa-shield-alt fa-3x text-warning mb-3"></i>
+                    <h3 class="card-title">Secure Platform</h3>
+                    <p class="card-text">Your data is protected with strict security measures and verification processes.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4 animate-on-scroll" data-animation="bounce-in">
+            <div class="card h-100 bg-dark floating-card">
+                <div class="card-body text-center">
+                    <i class="fas fa-mobile-alt fa-3x text-primary mb-3"></i>
+                    <h3 class="card-title">Mobile Friendly</h3>
+                    <p class="card-text">Access our platform from any device with our responsive design.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Statistics Section -->
+<section class="bg-dark py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="display-4 mb-3">Our <span class="text-primary">Impact</span></h2>
+            <p class="lead">Together we're making a difference</p>
+        </div>
+        
+        <div class="row g-4 text-center">
+            <div class="col-md-3 col-6">
+                <div class="stats-card">
+                    <i class="fas fa-users text-primary"></i>
+                    <h3 class="counter" data-target="1500">0</h3>
+                    <p>Registered Users</p>
+                </div>
+            </div>
+            
+            <div class="col-md-3 col-6">
+                <div class="stats-card">
+                    <i class="fas fa-heartbeat text-danger"></i>
+                    <h3 class="counter" data-target="850">0</h3>
+                    <p>Organ Donations</p>
+                </div>
+            </div>
+            
+            <div class="col-md-3 col-6">
+                <div class="stats-card">
+                    <i class="fas fa-tint text-danger"></i>
+                    <h3 class="counter" data-target="2200">0</h3>
+                    <p>Blood Donations</p>
+                </div>
+            </div>
+            
+            <div class="col-md-3 col-6">
+                <div class="stats-card">
+                    <i class="fas fa-hospital text-info"></i>
+                    <h3 class="counter" data-target="120">0</h3>
+                    <p>Partner Hospitals</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section class="container py-5" id="about">
+    <div class="row">
+        <div class="col-lg-6 animate-on-scroll" data-animation="slide-in-left">
+            <h2 class="display-4 mb-4">About <span class="text-primary">LifeSaver</span></h2>
+            <p class="lead">We're dedicated to saving lives through organ and blood donation.</p>
+            <p>Our mission is to bridge the gap between donors and recipients, making the donation process smooth and transparent. We believe in creating a world where no life is lost due to the unavailability of organs or blood.</p>
+            <p>LifeSaver platform maintains all kinds of essential donations to the needy under a single portal and provides donations to those in need. The main aim is collecting the donations and delivering them to the respective organizations and also providing information to the volunteers of that organization to maintain transparency.</p>
+            
+            <div class="d-flex mt-4">
+                <div class="me-4">
+                    <h4><i class="fas fa-eye text-primary me-2"></i>Our Vision</h4>
+                    <p>A world where everyone has access to life-saving organs and blood when needed.</p>
+                </div>
+                <div>
+                    <h4><i class="fas fa-bullseye text-primary me-2"></i>Our Mission</h4>
+                    <p>To create a seamless and transparent donation system that saves lives.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-6 animate-on-scroll" data-animation="slide-in-right">
+            <div class="card bg-dark mt-4 mt-lg-0">
+                <div class="card-body">
+                    <h3 class="card-title mb-4">Why Choose LifeSaver?</h3>
+                    
+                    <div class="d-flex mb-3">
+                        <div class="me-3">
+                            <i class="fas fa-check-circle text-success fa-2x"></i>
+                        </div>
+                        <div>
+                            <h5>Secure OTP Verification</h5>
+                            <p>We ensure the safety and authenticity of donations through secure OTP verification.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex mb-3">
+                        <div class="me-3">
+                            <i class="fas fa-check-circle text-success fa-2x"></i>
+                        </div>
+                        <div>
+                            <h5>Expert Doctor Assignment</h5>
+                            <p>Our platform assigns specialized doctors for each donation process.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex mb-3">
+                        <div class="me-3">
+                            <i class="fas fa-check-circle text-success fa-2x"></i>
+                        </div>
+                        <div>
+                            <h5>Transparent Process</h5>
+                            <p>We maintain complete transparency throughout the donation process.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex">
+                        <div class="me-3">
+                            <i class="fas fa-check-circle text-success fa-2x"></i>
+                        </div>
+                        <div>
+                            <h5>Comprehensive Management</h5>
+                            <p>Our system handles both organ and blood donations under a single platform.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="bg-primary text-white text-center py-5">
+    <div class="container">
+        <h2 class="display-4 mb-4">Ready to Save Lives?</h2>
+        <p class="lead mb-4">Join our platform today and be a part of our life-saving mission.</p>
+        <div class="d-flex justify-content-center flex-wrap gap-3">
+            {% if not current_user.is_authenticated %}
+                <a href="{{ url_for('auth.register') }}" class="btn btn-light btn-lg">
+                    <i class="fas fa-user-plus me-2"></i>Register Now
+                </a>
+                <a href="{{ url_for('auth.login') }}" class="btn btn-outline-light btn-lg">
+                    <i class="fas fa-sign-in-alt me-2"></i>Login
+                </a>
+            {% else %}
+                {% if current_user.get_role() == 'user' %}
+                    <a href="{{ url_for('user.dashboard') }}" class="btn btn-light btn-lg">
+                        <i class="fas fa-tachometer-alt me-2"></i>Go to Dashboard
+                    </a>
+                {% elif current_user.get_role() == 'doctor' %}
+                    <a href="{{ url_for('doctor.dashboard') }}" class="btn btn-light btn-lg">
+                        <i class="fas fa-stethoscope me-2"></i>Go to Doctor Dashboard
+                    </a>
+                {% elif current_user.get_role() == 'admin' %}
+                    <a href="{{ url_for('admin.dashboard') }}" class="btn btn-light btn-lg">
+                        <i class="fas fa-user-shield me-2"></i>Go to Admin Dashboard
+                    </a>
+                {% endif %}
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section class="container py-5" id="contact">
+    <div class="text-center mb-5">
+        <h2 class="display-4 mb-3">Contact <span class="text-primary">Us</span></h2>
+        <p class="lead">Get in touch with our team for any inquiries</p>
+    </div>
+    
+    <div class="row">
+        <div class="col-lg-6 mb-4 mb-lg-0 animate-on-scroll" data-animation="slide-in-left">
+            <div class="card bg-dark h-100">
+                <div class="card-body">
+                    <h3 class="card-title mb-4">Contact Information</h3>
+                    
+                    <div class="d-flex mb-3">
+                        <div class="me-3">
+                            <i class="fas fa-map-marker-alt text-primary fa-2x"></i>
+                        </div>
+                        <div>
+                            <h5>Address</h5>
+                            <p>123 Donation Street, Health City, Medical State, 12345</p>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex mb-3">
+                        <div class="me-3">
+                            <i class="fas fa-phone text-primary fa-2x"></i>
+                        </div>
+                        <div>
+                            <h5>Phone</h5>
+                            <p>+1 (123) 456-7890</p>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex mb-3">
+                        <div class="me-3">
+                            <i class="fas fa-envelope text-primary fa-2x"></i>
+                        </div>
+                        <div>
+                            <h5>Email</h5>
+                            <p>contact@lifesaver.org</p>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex">
+                        <div class="me-3">
+                            <i class="fas fa-clock text-primary fa-2x"></i>
+                        </div>
+                        <div>
+                            <h5>Working Hours</h5>
+                            <p>Monday - Friday: 9:00 AM - 5:00 PM<br>
+                            Saturday: 10:00 AM - 2:00 PM<br>
+                            Sunday: Closed</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <h5>Follow Us</h5>
+                        <div class="d-flex gap-3 mt-2">
+                            <a href="#" class="text-primary fs-4"><i class="fab fa-facebook"></i></a>
+                            <a href="#" class="text-info fs-4"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="text-danger fs-4"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="text-primary fs-4"><i class="fab fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-6 animate-on-scroll" data-animation="slide-in-right">
+            <div class="card bg-dark h-100">
+                <div class="card-body">
+                    <h3 class="card-title mb-4">Send Us a Message</h3>
+                    
+                    <form>
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Your Name</label>
+                            <input type="text" class="form-control" id="name" placeholder="Enter your name">
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email Address</label>
+                            <input type="email" class="form-control" id="email" placeholder="Enter your email">
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="subject" class="form-label">Subject</label>
+                            <input type="text" class="form-control" id="subject" placeholder="Enter subject">
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea class="form-control" id="message" rows="5" placeholder="Enter your message"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane me-2"></i>Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

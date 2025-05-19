@@ -1,0 +1,64 @@
+{% extends 'layout.html' %}
+
+{% block title %}Assign Doctor - Organ & Blood Donation System{% endblock %}
+
+{% block content %}
+<section class="container py-4">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card bg-dark animate-on-scroll" data-animation="fade-in">
+                <div class="card-header bg-primary text-white">
+                    {% if donation %}
+                        <h3 class="mb-0"><i class="fas fa-user-md me-2"></i>Assign Doctor for Organ Collection</h3>
+                    {% elif request %}
+                        <h3 class="mb-0"><i class="fas fa-user-md me-2"></i>Assign Doctor for Organ Request</h3>
+                    {% endif %}
+                </div>
+                <div class="card-body">
+                    {% if donation %}
+                        <div class="alert alert-info mb-4">
+                            <h5 class="alert-heading">Donation Details</h5>
+                            <p class="mb-0"><strong>Donor:</strong> {{ donation.donor.username }}</p>
+                            <p class="mb-0"><strong>Organ Type:</strong> {{ donation.organ_type|capitalize }}</p>
+                            <p class="mb-0"><strong>Blood Group:</strong> {{ donation.blood_group }}</p>
+                            <p class="mb-0"><strong>Status:</strong> {{ donation.status|capitalize }}</p>
+                            <p class="mb-0"><strong>Date Added:</strong> {{ donation.date_added.strftime('%Y-%m-%d') }}</p>
+                        </div>
+                    {% elif request %}
+                        <div class="alert alert-info mb-4">
+                            <h5 class="alert-heading">Request Details</h5>
+                            <p class="mb-0"><strong>Requester:</strong> {{ request.requester.username }}</p>
+                            <p class="mb-0"><strong>Organ Type:</strong> {{ request.organ_type|capitalize }}</p>
+                            <p class="mb-0"><strong>Blood Group:</strong> {{ request.blood_group }}</p>
+                            <p class="mb-0"><strong>Urgency:</strong> {{ request.urgency_level|capitalize }}</p>
+                            <p class="mb-0"><strong>Status:</strong> {{ request.status|capitalize }}</p>
+                            <p class="mb-0"><strong>Date Requested:</strong> {{ request.date_requested.strftime('%Y-%m-%d') }}</p>
+                        </div>
+                    {% endif %}
+
+                    <form method="POST" action="{% if donation %}{{ url_for('admin.assign_doctor_to_donation', donation_id=donation.id) }}{% elif request %}{{ url_for('admin.assign_doctor_to_request', request_id=request.id) }}{% endif %}">
+                        {{ form.hidden_tag() }}
+                        
+                        <div class="mb-3">
+                            <label for="doctor" class="form-label">{{ form.doctor.label }}</label>
+                            {{ form.doctor(class="form-select") }}
+                            {% if form.doctor.errors %}
+                                {% for error in form.doctor.errors %}
+                                    <div class="text-danger">{{ error }}</div>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                        
+                        <div class="d-flex justify-content-between mt-4">
+                            <a href="{% if donation %}{{ url_for('admin.organ_donations') }}{% elif request %}{{ url_for('admin.organ_requests') }}{% endif %}" class="btn btn-secondary">
+                                <i class="fas fa-arrow-left me-1"></i> Back
+                            </a>
+                            {{ form.submit(class="btn btn-primary") }}
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

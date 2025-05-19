@@ -1,0 +1,345 @@
+{% extends 'layout.html' %}
+
+{% block title %}My Donations - Organ & Blood Donation System{% endblock %}
+
+{% block content %}
+<section class="container py-4">
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <h1 class="mb-3"><i class="fas fa-gift me-2"></i>My Donations</h1>
+            <p class="lead">View and manage all your organ and blood donations</p>
+        </div>
+    </div>
+
+    <!-- Donation Tabs -->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card bg-dark animate-on-scroll" data-animation="fade-in">
+                <div class="card-body">
+                    <ul class="nav nav-tabs" id="donationsTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="all-donations-tab" data-bs-toggle="tab" data-bs-target="#all-donations" type="button" role="tab" aria-controls="all-donations" aria-selected="true">All Donations</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="organ-donations-tab" data-bs-toggle="tab" data-bs-target="#organ-donations" type="button" role="tab" aria-controls="organ-donations" aria-selected="false">Organ Donations</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="blood-donations-tab" data-bs-toggle="tab" data-bs-target="#blood-donations" type="button" role="tab" aria-controls="blood-donations" aria-selected="false">Blood Donations</button>
+                        </li>
+                    </ul>
+                    
+                    <div class="tab-content mt-3" id="donationsTabContent">
+                        <!-- All Donations Tab -->
+                        <div class="tab-pane fade show active" id="all-donations" role="tabpanel" aria-labelledby="all-donations-tab">
+                            <div class="d-flex justify-content-end mb-3">
+                                <div class="btn-group">
+                                    <a href="{{ url_for('user.donate_organ') }}" class="btn btn-primary">
+                                        <i class="fas fa-plus me-1"></i> Donate Organ
+                                    </a>
+                                    <a href="{{ url_for('user.donate_blood') }}" class="btn btn-danger">
+                                        <i class="fas fa-plus me-1"></i> Donate Blood
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            {% if organ_donations or blood_donations %}
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Type</th>
+                                                <th>Details</th>
+                                                <th>Blood Group</th>
+                                                <th>Status</th>
+                                                <th>Date Added</th>
+                                                <th>Collection Date</th>
+                                                <th>Collection Doctor</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for donation in organ_donations %}
+                                            <tr>
+                                                <td>{{ donation.id }}</td>
+                                                <td>Organ</td>
+                                                <td>{{ donation.organ_type|capitalize }}</td>
+                                                <td>{{ donation.blood_group }}</td>
+                                                <td>
+                                                    <span class="badge {% if donation.status == 'pending' %}bg-warning{% elif donation.status == 'approved' %}bg-info{% elif donation.status == 'collected' %}bg-success{% else %}bg-danger{% endif %}">
+                                                        {{ donation.status|capitalize }}
+                                                    </span>
+                                                </td>
+                                                <td>{{ donation.date_added.strftime('%Y-%m-%d') }}</td>
+                                                <td>
+                                                    {% if donation.collection_date %}
+                                                        {{ donation.collection_date.strftime('%Y-%m-%d') }}
+                                                    {% else %}
+                                                        <span class="text-secondary">Not Collected</span>
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    {% if donation.collection_doctor %}
+                                                        Dr. {{ donation.collection_doctor.user.username }}
+                                                    {% else %}
+                                                        <span class="text-warning">Not Assigned</span>
+                                                    {% endif %}
+                                                </td>
+                                            </tr>
+                                            {% endfor %}
+                                            {% for donation in blood_donations %}
+                                            <tr>
+                                                <td>{{ donation.id }}</td>
+                                                <td>Blood</td>
+                                                <td>{{ donation.quantity_ml }} ml</td>
+                                                <td>{{ donation.blood_group }}</td>
+                                                <td>
+                                                    <span class="badge {% if donation.status == 'pending' %}bg-warning{% elif donation.status == 'approved' %}bg-info{% elif donation.status == 'collected' %}bg-success{% else %}bg-danger{% endif %}">
+                                                        {{ donation.status|capitalize }}
+                                                    </span>
+                                                </td>
+                                                <td>{{ donation.date_added.strftime('%Y-%m-%d') }}</td>
+                                                <td>
+                                                    {% if donation.collection_date %}
+                                                        {{ donation.collection_date.strftime('%Y-%m-%d') }}
+                                                    {% else %}
+                                                        <span class="text-secondary">Not Collected</span>
+                                                    {% endif %}
+                                                </td>
+                                                <td>N/A</td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            {% else %}
+                                <div class="text-center py-5">
+                                    <i class="fas fa-gift fa-4x text-secondary mb-3"></i>
+                                    <h4>No donations found</h4>
+                                    <p class="mb-4">You haven't made any organ or blood donations yet.</p>
+                                    <div class="btn-group">
+                                        <a href="{{ url_for('user.donate_organ') }}" class="btn btn-primary">
+                                            <i class="fas fa-plus me-1"></i> Donate Organ
+                                        </a>
+                                        <a href="{{ url_for('user.donate_blood') }}" class="btn btn-danger">
+                                            <i class="fas fa-plus me-1"></i> Donate Blood
+                                        </a>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        </div>
+                        
+                        <!-- Organ Donations Tab -->
+                        <div class="tab-pane fade" id="organ-donations" role="tabpanel" aria-labelledby="organ-donations-tab">
+                            <div class="d-flex justify-content-end mb-3">
+                                <a href="{{ url_for('user.donate_organ') }}" class="btn btn-primary">
+                                    <i class="fas fa-plus me-1"></i> Donate Organ
+                                </a>
+                            </div>
+                            
+                            {% if organ_donations %}
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Organ Type</th>
+                                                <th>Blood Group</th>
+                                                <th>Status</th>
+                                                <th>Date Added</th>
+                                                <th>Collection Date</th>
+                                                <th>Collection Doctor</th>
+                                                <th>OTP Verified</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for donation in organ_donations %}
+                                            <tr>
+                                                <td>{{ donation.id }}</td>
+                                                <td>{{ donation.organ_type|capitalize }}</td>
+                                                <td>{{ donation.blood_group }}</td>
+                                                <td>
+                                                    <span class="badge {% if donation.status == 'pending' %}bg-warning{% elif donation.status == 'approved' %}bg-info{% elif donation.status == 'collected' %}bg-success{% else %}bg-danger{% endif %}">
+                                                        {{ donation.status|capitalize }}
+                                                    </span>
+                                                </td>
+                                                <td>{{ donation.date_added.strftime('%Y-%m-%d') }}</td>
+                                                <td>
+                                                    {% if donation.collection_date %}
+                                                        {{ donation.collection_date.strftime('%Y-%m-%d') }}
+                                                    {% else %}
+                                                        <span class="text-secondary">Not Collected</span>
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    {% if donation.collection_doctor %}
+                                                        Dr. {{ donation.collection_doctor.user.username }}
+                                                    {% else %}
+                                                        <span class="text-warning">Not Assigned</span>
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    {% if donation.otp_verified %}
+                                                        <span class="text-success"><i class="fas fa-check-circle"></i> Verified</span>
+                                                    {% else %}
+                                                        <span class="text-warning"><i class="fas fa-clock"></i> Pending</span>
+                                                    {% endif %}
+                                                </td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            {% else %}
+                                <div class="text-center py-5">
+                                    <i class="fas fa-heart fa-4x text-secondary mb-3"></i>
+                                    <h4>No organ donations found</h4>
+                                    <p class="mb-4">You haven't made any organ donations yet.</p>
+                                    <a href="{{ url_for('user.donate_organ') }}" class="btn btn-primary">
+                                        <i class="fas fa-plus me-1"></i> Donate Organ
+                                    </a>
+                                </div>
+                            {% endif %}
+                        </div>
+                        
+                        <!-- Blood Donations Tab -->
+                        <div class="tab-pane fade" id="blood-donations" role="tabpanel" aria-labelledby="blood-donations-tab">
+                            <div class="d-flex justify-content-end mb-3">
+                                <a href="{{ url_for('user.donate_blood') }}" class="btn btn-danger">
+                                    <i class="fas fa-plus me-1"></i> Donate Blood
+                                </a>
+                            </div>
+                            
+                            {% if blood_donations %}
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Blood Group</th>
+                                                <th>Quantity (ml)</th>
+                                                <th>Status</th>
+                                                <th>Date Added</th>
+                                                <th>Collection Date</th>
+                                                <th>OTP Verified</th>
+                                                <th>Matched Request</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for donation in blood_donations %}
+                                            <tr>
+                                                <td>{{ donation.id }}</td>
+                                                <td>{{ donation.blood_group }}</td>
+                                                <td>{{ donation.quantity_ml }}</td>
+                                                <td>
+                                                    <span class="badge {% if donation.status == 'pending' %}bg-warning{% elif donation.status == 'approved' %}bg-info{% elif donation.status == 'collected' %}bg-success{% else %}bg-danger{% endif %}">
+                                                        {{ donation.status|capitalize }}
+                                                    </span>
+                                                </td>
+                                                <td>{{ donation.date_added.strftime('%Y-%m-%d') }}</td>
+                                                <td>
+                                                    {% if donation.collection_date %}
+                                                        {{ donation.collection_date.strftime('%Y-%m-%d') }}
+                                                    {% else %}
+                                                        <span class="text-secondary">Not Collected</span>
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    {% if donation.otp_verified %}
+                                                        <span class="text-success"><i class="fas fa-check-circle"></i> Verified</span>
+                                                    {% else %}
+                                                        <span class="text-warning"><i class="fas fa-clock"></i> Pending</span>
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    {% if donation.matched_request %}
+                                                        <span class="text-success">Matched</span>
+                                                    {% else %}
+                                                        <span class="text-secondary">None</span>
+                                                    {% endif %}
+                                                </td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            {% else %}
+                                <div class="text-center py-5">
+                                    <i class="fas fa-tint fa-4x text-secondary mb-3"></i>
+                                    <h4>No blood donations found</h4>
+                                    <p class="mb-4">You haven't made any blood donations yet.</p>
+                                    <a href="{{ url_for('user.donate_blood') }}" class="btn btn-danger">
+                                        <i class="fas fa-plus me-1"></i> Donate Blood
+                                    </a>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Status Information -->
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <div class="card bg-dark animate-on-scroll" data-animation="slide-in-up">
+                <div class="card-header bg-primary">
+                    <h4 class="mb-0"><i class="fas fa-info-circle me-2"></i>Understanding Donation Status</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>Status Definitions</h5>
+                            <ul class="list-group list-group-flush bg-dark">
+                                <li class="list-group-item bg-dark d-flex align-items-center">
+                                    <span class="badge bg-warning me-2">Pending</span>
+                                    <span>Your donation is being reviewed by our team</span>
+                                </li>
+                                <li class="list-group-item bg-dark d-flex align-items-center">
+                                    <span class="badge bg-info me-2">Approved</span>
+                                    <span>Your donation has been approved, awaiting collection</span>
+                                </li>
+                                <li class="list-group-item bg-dark d-flex align-items-center">
+                                    <span class="badge bg-success me-2">Collected</span>
+                                    <span>Your donation has been successfully collected</span>
+                                </li>
+                                <li class="list-group-item bg-dark d-flex align-items-center">
+                                    <span class="badge bg-danger me-2">Unavailable</span>
+                                    <span>Your donation cannot be processed at this time</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h5>Donation Process</h5>
+                            <div class="card bg-secondary mb-2">
+                                <div class="card-body">
+                                    <h6 class="card-title">1. Registration</h6>
+                                    <p class="card-text">You submit your donation intent through our platform.</p>
+                                </div>
+                            </div>
+                            <div class="card bg-secondary mb-2">
+                                <div class="card-body">
+                                    <h6 class="card-title">2. Approval</h6>
+                                    <p class="card-text">Our medical team reviews your application and assigns a doctor for collection (for organs).</p>
+                                </div>
+                            </div>
+                            <div class="card bg-secondary mb-2">
+                                <div class="card-body">
+                                    <h6 class="card-title">3. Collection</h6>
+                                    <p class="card-text">You'll receive an OTP for verification at the donation center, and the donation is collected.</p>
+                                </div>
+                            </div>
+                            <div class="card bg-secondary">
+                                <div class="card-body">
+                                    <h6 class="card-title">4. Matching</h6>
+                                    <p class="card-text">Your donation is matched with a compatible recipient in need.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,220 @@
+# Step-by-Step Installation Guide for Windows, macOS, and Linux
+
+## Windows Installation Steps
+
+1. **Install Python 3.8+**
+   - Download from https://www.python.org/downloads/windows/
+   - Run the installer, check "Add Python to PATH"
+   - Click "Install Now"
+
+2. **Install PostgreSQL**
+   - Download from https://www.postgresql.org/download/windows/
+   - Run the installer
+   - Remember the password you set for the 'postgres' user
+   - Keep the default port (5432)
+
+3. **Download the Application Files**
+   - Download all files from the Replit project
+   - Extract to a folder (e.g., C:\Projects\lifesaver)
+
+4. **Open Command Prompt**
+   - Press Win+R, type "cmd", press Enter
+   - Navigate to the project folder: `cd C:\Projects\lifesaver`
+
+5. **Create Virtual Environment**
+   ```
+   python -m venv venv
+   venv\Scripts\activate
+   ```
+
+6. **Install Required Packages**
+   ```
+   pip install flask flask-login flask-mail flask-sqlalchemy flask-wtf email-validator psycopg2-binary twilio sendgrid sqlalchemy wtforms
+   ```
+
+7. **Set Up Database**
+   - In the project folder, run:
+   ```
+   cd local_setup
+   python database_setup.py
+   cd ..
+   ```
+   - Follow the prompts to create the database
+
+8. **Initialize the Database**
+   ```
+   python init_db.py
+   ```
+
+9. **Run the Application Locally**
+   ```
+   python local_setup\local_main.py
+   ```
+
+10. **Access the Application**
+    - Open your browser and go to: http://localhost:5000
+    - Login as admin:
+      - Email: admin@lifesaver.com
+      - Password: admin123
+
+## macOS Installation Steps
+
+1. **Install Python 3.8+**
+   - Download from https://www.python.org/downloads/mac-osx/
+   - Run the installer
+   - Verify installation: `python3 --version`
+
+2. **Install PostgreSQL**
+   - Option 1: Using Homebrew
+     ```
+     brew install postgresql
+     brew services start postgresql
+     ```
+   - Option 2: Download installer from https://www.postgresql.org/download/macosx/
+
+3. **Download the Application Files**
+   - Download all files from the Replit project
+   - Extract to a folder (e.g., ~/Projects/lifesaver)
+
+4. **Open Terminal**
+   - Navigate to the project folder: `cd ~/Projects/lifesaver`
+
+5. **Create Virtual Environment**
+   ```
+   python3 -m venv venv
+   source venv/bin/activate
+   ```
+
+6. **Install Required Packages**
+   ```
+   pip install flask flask-login flask-mail flask-sqlalchemy flask-wtf email-validator psycopg2-binary twilio sendgrid sqlalchemy wtforms
+   ```
+
+7. **Set Up Database**
+   - In the project folder, run:
+   ```
+   cd local_setup
+   python database_setup.py
+   cd ..
+   ```
+   - Follow the prompts to create the database
+
+8. **Initialize the Database**
+   ```
+   python init_db.py
+   ```
+
+9. **Run the Application Locally**
+   ```
+   python local_setup/local_main.py
+   ```
+
+10. **Access the Application**
+    - Open your browser and go to: http://localhost:5000
+    - Login as admin:
+      - Email: admin@lifesaver.com
+      - Password: admin123
+
+## Linux (Ubuntu/Debian) Installation Steps
+
+1. **Install Python 3.8+**
+   ```
+   sudo apt update
+   sudo apt install python3 python3-pip python3-venv
+   ```
+
+2. **Install PostgreSQL**
+   ```
+   sudo apt install postgresql postgresql-contrib
+   sudo systemctl start postgresql
+   sudo systemctl enable postgresql
+   ```
+
+3. **Download the Application Files**
+   - Download all files from the Replit project
+   - Extract to a folder (e.g., ~/projects/lifesaver)
+
+4. **Open Terminal**
+   - Navigate to the project folder: `cd ~/projects/lifesaver`
+
+5. **Create Virtual Environment**
+   ```
+   python3 -m venv venv
+   source venv/bin/activate
+   ```
+
+6. **Install Required Packages**
+   ```
+   pip install flask flask-login flask-mail flask-sqlalchemy flask-wtf email-validator psycopg2-binary twilio sendgrid sqlalchemy wtforms
+   ```
+
+7. **Set Up Database**
+   - In the project folder, run:
+   ```
+   cd local_setup
+   python database_setup.py
+   cd ..
+   ```
+   - Follow the prompts to create the database
+
+8. **Initialize the Database**
+   ```
+   python init_db.py
+   ```
+
+9. **Run the Application Locally**
+   ```
+   python local_setup/local_main.py
+   ```
+
+10. **Access the Application**
+    - Open your browser and go to: http://localhost:5000
+    - Login as admin:
+      - Email: admin@lifesaver.com
+      - Password: admin123
+
+## Troubleshooting Common Issues
+
+### PostgreSQL Connection Issues
+
+1. **Service Not Running**
+   - Windows: Check Services app, look for PostgreSQL service
+   - macOS: Run `brew services list | grep postgres`
+   - Linux: Run `sudo systemctl status postgresql`
+
+2. **Authentication Failed**
+   - Check if the database username and password in .env file match what you created
+   - Windows: You might need to edit pg_hba.conf to change authentication method
+
+3. **Database Does Not Exist**
+   - Run the database_setup.py script again
+   - Or manually create database: `createdb -U postgres organ_donation`
+
+### Email Configuration Issues
+
+1. **Gmail Authentication Issues**
+   - Use an App Password instead of your regular password
+   - Steps to create App Password:
+     1. Go to Google Account > Security
+     2. Enable 2-Step Verification if not already enabled
+     3. Go to App passwords
+     4. Select "Mail" and "Other (Custom name)"
+     5. Enter "Lifesaver App" and click "Generate"
+     6. Use the generated password in your .env file
+
+2. **Email Not Sending**
+   - Check your internet connection
+   - Verify MAIL_USERNAME and MAIL_PASSWORD in .env file
+   - Gmail might block access - check your Gmail account for security alerts
+
+### Python/Package Issues
+
+1. **Module Not Found Errors**
+   - Ensure you're running from the virtual environment
+   - Try reinstalling packages: `pip install -r requirements.txt`
+
+2. **Port Already In Use**
+   - Change the port in local_main.py from 5000 to another port (e.g., 8000)
+   - Kill the process using the port:
+     - Windows: `netstat -ano | findstr 5000` then `taskkill /F /PID [PID]`
+     - macOS/Linux: `lsof -i :5000` then `kill -9 [PID]`

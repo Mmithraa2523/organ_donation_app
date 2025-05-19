@@ -1,0 +1,282 @@
+{% extends 'layout.html' %}
+
+{% block title %}Organ Requests - Organ & Blood Donation System{% endblock %}
+
+{% block content %}
+<section class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h1 class="mb-0"><i class="fas fa-hand-holding-heart me-2"></i>Assigned Organ Requests</h1>
+            <p class="lead">Manage the organ requests assigned to you</p>
+        </div>
+    </div>
+
+    <div class="card bg-dark animate-on-scroll" data-animation="fade-in">
+        <div class="card-body">
+            <ul class="nav nav-tabs mb-3" id="requestsTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="all-requests-tab" data-bs-toggle="tab" data-bs-target="#all-requests" type="button" role="tab" aria-controls="all-requests" aria-selected="true">All Requests</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="pending-requests-tab" data-bs-toggle="tab" data-bs-target="#pending-requests" type="button" role="tab" aria-controls="pending-requests" aria-selected="false">Pending</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="approved-requests-tab" data-bs-toggle="tab" data-bs-target="#approved-requests" type="button" role="tab" aria-controls="approved-requests" aria-selected="false">Approved</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="fulfilled-requests-tab" data-bs-toggle="tab" data-bs-target="#fulfilled-requests" type="button" role="tab" aria-controls="fulfilled-requests" aria-selected="false">Fulfilled</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="unavailable-requests-tab" data-bs-toggle="tab" data-bs-target="#unavailable-requests" type="button" role="tab" aria-controls="unavailable-requests" aria-selected="false">Unavailable</button>
+                </li>
+            </ul>
+            
+            <div class="tab-content" id="requestsTabContent">
+                <div class="tab-pane fade show active" id="all-requests" role="tabpanel" aria-labelledby="all-requests-tab">
+                    {% if organ_requests %}
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Requester</th>
+                                        <th>Organ Type</th>
+                                        <th>Blood Group</th>
+                                        <th>Urgency</th>
+                                        <th>Status</th>
+                                        <th>Date Requested</th>
+                                        <th>Matched Donation</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for request in organ_requests %}
+                                    <tr>
+                                        <td>{{ request.id }}</td>
+                                        <td>{{ request.requester.username }}</td>
+                                        <td>{{ request.organ_type|capitalize }}</td>
+                                        <td>{{ request.blood_group }}</td>
+                                        <td>
+                                            <span class="badge {% if request.urgency_level == 'critical' %}bg-danger{% elif request.urgency_level == 'urgent' %}bg-warning{% else %}bg-info{% endif %}">
+                                                {{ request.urgency_level|capitalize }}
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span class="badge {% if request.status == 'pending' %}bg-warning{% elif request.status == 'approved' %}bg-info{% elif request.status == 'fulfilled' %}bg-success{% else %}bg-danger{% endif %}">
+                                                {{ request.status|capitalize }}
+                                            </span>
+                                        </td>
+                                        <td>{{ request.date_requested.strftime('%Y-%m-%d') }}</td>
+                                        <td>
+                                            {% if request.matched_donation %}
+                                                <span class="text-success"><i class="fas fa-check-circle"></i> Matched</span>
+                                            {% else %}
+                                                <span class="text-warning"><i class="fas fa-times-circle"></i> No Match</span>
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            <div class="btn-group btn-group-sm">
+                                                <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#requestDetailsModal{{ request.id }}">
+                                                    <i class="fas fa-eye"></i>
+                                                </button>
+                                                <a href="{{ url_for('doctor.update_request_status', request_id=request.id) }}" class="btn btn-primary">
+                                                    <i class="fas fa-edit"></i>
+                                                </a>
+                                            </div>
+                                            
+                                            <!-- Request Details Modal -->
+                                            <div class="modal fade" id="requestDetailsModal{{ request.id }}" tabindex="-1" aria-labelledby="requestDetailsModalLabel{{ request.id }}" aria-hidden="true">
+                                                <div class="modal-dialog modal-lg">
+                                                    <div class="modal-content bg-dark">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="requestDetailsModalLabel{{ request.id }}">
+                                                                Request Details #{{ request.id }}
+                                                            </h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <h6 class="text-primary">Requester Information</h6>
+                                                                    <p><strong>Name:</strong> {{ request.requester.username }}</p>
+                                                                    <p><strong>Email:</strong> {{ request.requester.email }}</p>
+                                                                    <p><strong>Phone:</strong> {{ request.requester.phone }}</p>
+                                                                    <p><strong>Address:</strong> {{ request.requester.address }}</p>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <h6 class="text-primary">Request Information</h6>
+                                                                    <p><strong>Organ Type:</strong> {{ request.organ_type|capitalize }}</p>
+                                                                    <p><strong>Blood Group:</strong> {{ request.blood_group }}</p>
+                                                                    <p><strong>Urgency Level:</strong> 
+                                                                        <span class="badge {% if request.urgency_level == 'critical' %}bg-danger{% elif request.urgency_level == 'urgent' %}bg-warning{% else %}bg-info{% endif %}">
+                                                                            {{ request.urgency_level|capitalize }}
+                                                                        </span>
+                                                                    </p>
+                                                                    <p><strong>Status:</strong> 
+                                                                        <span class="badge {% if request.status == 'pending' %}bg-warning{% elif request.status == 'approved' %}bg-info{% elif request.status == 'fulfilled' %}bg-success{% else %}bg-danger{% endif %}">
+                                                                            {{ request.status|capitalize }}
+                                                                        </span>
+                                                                    </p>
+                                                                    <p><strong>Date Requested:</strong> {{ request.date_requested.strftime('%Y-%m-%d %H:%M') }}</p>
+                                                                </div>
+                                                            </div>
+                                                            <hr>
+                                                            <div class="row">
+                                                                <div class="col-12">
+                                                                    <h6 class="text-primary">Additional Information</h6>
+                                                                    <p>{{ request.additional_info if request.additional_info else 'No additional information provided.' }}</p>
+                                                                </div>
+                                                            </div>
+                                                            {% if request.matched_donation %}
+                                                            <hr>
+                                                            <div class="row">
+                                                                <div class="col-12">
+                                                                    <h6 class="text-success">Matched Donation Information</h6>
+                                                                    <p><strong>Donor:</strong> {{ request.matched_donation.donor.username }}</p>
+                                                                    <p><strong>Organ Type:</strong> {{ request.matched_donation.organ_type|capitalize }}</p>
+                                                                    <p><strong>Blood Group:</strong> {{ request.matched_donation.blood_group }}</p>
+                                                                    <p><strong>Status:</strong> 
+                                                                        <span class="badge {% if request.matched_donation.status == 'pending' %}bg-warning{% elif request.matched_donation.status == 'approved' %}bg-info{% elif request.matched_donation.status == 'collected' %}bg-success{% else %}bg-danger{% endif %}">
+                                                                            {{ request.matched_donation.status|capitalize }}
+                                                                        </span>
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                            {% endif %}
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                            <a href="{{ url_for('doctor.update_request_status', request_id=request.id) }}" class="btn btn-primary">
+                                                                Update Status
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    {% else %}
+                        <div class="text-center py-5">
+                            <i class="fas fa-hand-holding-heart fa-4x text-secondary mb-3"></i>
+                            <h4>No organ requests assigned to you</h4>
+                            <p>You'll be assigned organ requests by the administrator</p>
+                        </div>
+                    {% endif %}
+                </div>
+                
+                <!-- Pending requests tab -->
+                <div class="tab-pane fade" id="pending-requests" role="tabpanel" aria-labelledby="pending-requests-tab">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Requester</th>
+                                    <th>Organ Type</th>
+                                    <th>Blood Group</th>
+                                    <th>Urgency</th>
+                                    <th>Date Requested</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for request in organ_requests if request.status == 'pending' %}
+                                <tr>
+                                    <td>{{ request.id }}</td>
+                                    <td>{{ request.requester.username }}</td>
+                                    <td>{{ request.organ_type|capitalize }}</td>
+                                    <td>{{ request.blood_group }}</td>
+                                    <td>
+                                        <span class="badge {% if request.urgency_level == 'critical' %}bg-danger{% elif request.urgency_level == 'urgent' %}bg-warning{% else %}bg-info{% endif %}">
+                                            {{ request.urgency_level|capitalize }}
+                                        </span>
+                                    </td>
+                                    <td>{{ request.date_requested.strftime('%Y-%m-%d') }}</td>
+                                    <td>
+                                        <div class="btn-group btn-group-sm">
+                                            <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#requestDetailsModal{{ request.id }}">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <a href="{{ url_for('doctor.update_request_status', request_id=request.id) }}" class="btn btn-primary">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% else %}
+                                <tr>
+                                    <td colspan="7" class="text-center">No pending requests found</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <!-- Similar tables for other status tabs -->
+                <div class="tab-pane fade" id="approved-requests" role="tabpanel" aria-labelledby="approved-requests-tab">
+                    <!-- Table for approved requests -->
+                </div>
+                
+                <div class="tab-pane fade" id="fulfilled-requests" role="tabpanel" aria-labelledby="fulfilled-requests-tab">
+                    <!-- Table for fulfilled requests -->
+                </div>
+                
+                <div class="tab-pane fade" id="unavailable-requests" role="tabpanel" aria-labelledby="unavailable-requests-tab">
+                    <!-- Table for unavailable requests -->
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Status Information -->
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <div class="card bg-dark animate-on-scroll" data-animation="slide-in-up">
+                <div class="card-header bg-info">
+                    <h4 class="mb-0"><i class="fas fa-info-circle me-2"></i>Request Status Guidelines</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card bg-warning mb-3">
+                                <div class="card-body">
+                                    <h5 class="card-title text-dark">Pending</h5>
+                                    <p class="card-text text-dark">The request is being processed but no action has been taken yet. Initial state of all requests.</p>
+                                </div>
+                            </div>
+                            <div class="card bg-info mb-3">
+                                <div class="card-body">
+                                    <h5 class="card-title text-dark">Approved</h5>
+                                    <p class="card-text text-dark">The request has been approved and matched with a suitable organ donor. Set this status when a match is found.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card bg-success mb-3">
+                                <div class="card-body">
+                                    <h5 class="card-title text-white">Fulfilled</h5>
+                                    <p class="card-text text-white">The request has been successfully fulfilled with a donation. Set this status after successful transplantation.</p>
+                                </div>
+                            </div>
+                            <div class="card bg-danger mb-3">
+                                <div class="card-body">
+                                    <h5 class="card-title text-white">Unavailable</h5>
+                                    <p class="card-text text-white">The requested organ is not available or the request cannot be fulfilled. Set this status when no suitable match can be found.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="alert alert-primary">
+                        <i class="fas fa-lightbulb me-2"></i> <strong>Tip:</strong> Update request statuses promptly to ensure the system remains accurate and up-to-date. This helps the admin team in managing organ donations and requests effectively.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

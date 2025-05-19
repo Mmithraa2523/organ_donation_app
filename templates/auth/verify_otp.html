@@ -1,0 +1,83 @@
+{% extends 'layout.html' %}
+
+{% block title %}Verify OTP - Organ & Blood Donation System{% endblock %}
+
+{% block content %}
+<section class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8">
+            <div class="card bg-dark animate-on-scroll" data-animation="bounce-in">
+                <div class="card-header bg-primary text-white text-center py-3">
+                    <h3 class="mb-0"><i class="fas fa-key me-2"></i>Verify OTP</h3>
+                </div>
+                <div class="card-body p-4">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-envelope fa-3x text-primary mb-3"></i>
+                        <h4 class="text-light">Email Verification</h4>
+                        <div class="alert alert-info">
+                            <p class="lead mb-1">We've sent an OTP to your email</p>
+                            <p>Please check your inbox and enter the 6-digit code below to verify your account</p>
+                        </div>
+                        
+                        {% if session.email_sent_success == False %}
+                        <div class="alert alert-warning mt-3">
+                            <p><i class="fas fa-exclamation-triangle me-2"></i>We were unable to send the email. Please use the resend button below or contact support if the problem persists.</p>
+                        </div>
+                        {% endif %}
+                        
+                        
+                    </div>
+                    
+                    <form method="POST" action="{{ url_for('auth.verify_account') }}">
+                        {{ form.hidden_tag() }}
+                        
+                        <div class="mb-4">
+                            <label for="otp" class="form-label">{{ form.otp.label }}</label>
+                            {{ form.otp(class="form-control form-control-lg text-center", placeholder="Enter 6-digit OTP") }}
+                            {% if form.otp.errors %}
+                                {% for error in form.otp.errors %}
+                                    <div class="text-danger">{{ error }}</div>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                        
+                        <div class="d-grid mb-3">
+                            {{ form.submit(class="btn btn-primary btn-lg") }}
+                        </div>
+                        
+                        <div class="text-center">
+                            <p>Didn't receive the email?</p>
+                            <form id="resendForm" method="POST" action="{{ url_for('auth.resend_otp') }}">
+                                <button type="submit" class="btn btn-outline-info">
+                                    <i class="fas fa-paper-plane me-2"></i>Resend Email
+                                </button>
+                            </form>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer bg-dark text-center py-3">
+                    <a href="{{ url_for('auth.login') }}" class="text-muted">
+                        <i class="fas fa-arrow-left me-1"></i> Back to Login
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // No popup modal needed - everything is on the main page
+        const resendForm = document.getElementById('resendForm');
+        if (resendForm) {
+            resendForm.addEventListener('submit', function() {
+                const resendBtn = this.querySelector('button');
+                resendBtn.disabled = true;
+                resendBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Sending...';
+            });
+        }
+    });
+</script>
+{% endblock %}

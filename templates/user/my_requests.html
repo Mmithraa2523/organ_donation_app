@@ -1,0 +1,315 @@
+{% extends 'layout.html' %}
+
+{% block title %}My Requests - Organ & Blood Donation System{% endblock %}
+
+{% block content %}
+<section class="container py-4">
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <h1 class="mb-3"><i class="fas fa-clipboard-list me-2"></i>My Requests</h1>
+            <p class="lead">View and manage all your organ and blood requests</p>
+        </div>
+    </div>
+
+    <!-- Request Tabs -->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card bg-dark animate-on-scroll" data-animation="fade-in">
+                <div class="card-body">
+                    <ul class="nav nav-tabs" id="requestsTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="all-requests-tab" data-bs-toggle="tab" data-bs-target="#all-requests" type="button" role="tab" aria-controls="all-requests" aria-selected="true">All Requests</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="organ-requests-tab" data-bs-toggle="tab" data-bs-target="#organ-requests" type="button" role="tab" aria-controls="organ-requests" aria-selected="false">Organ Requests</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="blood-requests-tab" data-bs-toggle="tab" data-bs-target="#blood-requests" type="button" role="tab" aria-controls="blood-requests" aria-selected="false">Blood Requests</button>
+                        </li>
+                    </ul>
+                    
+                    <div class="tab-content mt-3" id="requestsTabContent">
+                        <!-- All Requests Tab -->
+                        <div class="tab-pane fade show active" id="all-requests" role="tabpanel" aria-labelledby="all-requests-tab">
+                            <div class="d-flex justify-content-end mb-3">
+                                <div class="btn-group">
+                                    <a href="{{ url_for('user.request_organ') }}" class="btn btn-success">
+                                        <i class="fas fa-plus me-1"></i> Request Organ
+                                    </a>
+                                    <a href="{{ url_for('user.request_blood') }}" class="btn btn-info">
+                                        <i class="fas fa-plus me-1"></i> Request Blood
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            {% if organ_requests or blood_requests %}
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Type</th>
+                                                <th>Details</th>
+                                                <th>Blood Group</th>
+                                                <th>Urgency</th>
+                                                <th>Status</th>
+                                                <th>Date Requested</th>
+                                                <th>Assigned Doctor</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for request in organ_requests %}
+                                            <tr>
+                                                <td>{{ request.id }}</td>
+                                                <td>Organ</td>
+                                                <td>{{ request.organ_type|capitalize }}</td>
+                                                <td>{{ request.blood_group }}</td>
+                                                <td>
+                                                    <span class="badge {% if request.urgency_level == 'critical' %}bg-danger{% elif request.urgency_level == 'urgent' %}bg-warning{% else %}bg-info{% endif %}">
+                                                        {{ request.urgency_level|capitalize }}
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span class="badge {% if request.status == 'pending' %}bg-warning{% elif request.status == 'approved' %}bg-info{% elif request.status == 'fulfilled' %}bg-success{% else %}bg-danger{% endif %}">
+                                                        {{ request.status|capitalize }}
+                                                    </span>
+                                                </td>
+                                                <td>{{ request.date_requested.strftime('%Y-%m-%d') }}</td>
+                                                <td>
+                                                    {% if request.assigned_doctor %}
+                                                        Dr. {{ request.assigned_doctor.user.username }}
+                                                    {% else %}
+                                                        <span class="text-warning">Not Assigned</span>
+                                                    {% endif %}
+                                                </td>
+                                            </tr>
+                                            {% endfor %}
+                                            {% for request in blood_requests %}
+                                            <tr>
+                                                <td>{{ request.id }}</td>
+                                                <td>Blood</td>
+                                                <td>{{ request.quantity_ml }} ml</td>
+                                                <td>{{ request.blood_group }}</td>
+                                                <td>
+                                                    <span class="badge {% if request.urgency_level == 'critical' %}bg-danger{% elif request.urgency_level == 'urgent' %}bg-warning{% else %}bg-info{% endif %}">
+                                                        {{ request.urgency_level|capitalize }}
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span class="badge {% if request.status == 'pending' %}bg-warning{% elif request.status == 'approved' %}bg-info{% elif request.status == 'fulfilled' %}bg-success{% else %}bg-danger{% endif %}">
+                                                        {{ request.status|capitalize }}
+                                                    </span>
+                                                </td>
+                                                <td>{{ request.date_requested.strftime('%Y-%m-%d') }}</td>
+                                                <td>N/A</td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            {% else %}
+                                <div class="text-center py-5">
+                                    <i class="fas fa-clipboard-list fa-4x text-secondary mb-3"></i>
+                                    <h4>No requests found</h4>
+                                    <p class="mb-4">You haven't submitted any organ or blood requests yet.</p>
+                                    <div class="btn-group">
+                                        <a href="{{ url_for('user.request_organ') }}" class="btn btn-success">
+                                            <i class="fas fa-plus me-1"></i> Request Organ
+                                        </a>
+                                        <a href="{{ url_for('user.request_blood') }}" class="btn btn-info">
+                                            <i class="fas fa-plus me-1"></i> Request Blood
+                                        </a>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        </div>
+                        
+                        <!-- Organ Requests Tab -->
+                        <div class="tab-pane fade" id="organ-requests" role="tabpanel" aria-labelledby="organ-requests-tab">
+                            <div class="d-flex justify-content-end mb-3">
+                                <a href="{{ url_for('user.request_organ') }}" class="btn btn-success">
+                                    <i class="fas fa-plus me-1"></i> Request Organ
+                                </a>
+                            </div>
+                            
+                            {% if organ_requests %}
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Organ Type</th>
+                                                <th>Blood Group</th>
+                                                <th>Urgency</th>
+                                                <th>Status</th>
+                                                <th>Date Requested</th>
+                                                <th>Assigned Doctor</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for request in organ_requests %}
+                                            <tr>
+                                                <td>{{ request.id }}</td>
+                                                <td>{{ request.organ_type|capitalize }}</td>
+                                                <td>{{ request.blood_group }}</td>
+                                                <td>
+                                                    <span class="badge {% if request.urgency_level == 'critical' %}bg-danger{% elif request.urgency_level == 'urgent' %}bg-warning{% else %}bg-info{% endif %}">
+                                                        {{ request.urgency_level|capitalize }}
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span class="badge {% if request.status == 'pending' %}bg-warning{% elif request.status == 'approved' %}bg-info{% elif request.status == 'fulfilled' %}bg-success{% else %}bg-danger{% endif %}">
+                                                        {{ request.status|capitalize }}
+                                                    </span>
+                                                </td>
+                                                <td>{{ request.date_requested.strftime('%Y-%m-%d') }}</td>
+                                                <td>
+                                                    {% if request.assigned_doctor %}
+                                                        Dr. {{ request.assigned_doctor.user.username }}
+                                                    {% else %}
+                                                        <span class="text-warning">Not Assigned</span>
+                                                    {% endif %}
+                                                </td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            {% else %}
+                                <div class="text-center py-5">
+                                    <i class="fas fa-hand-holding-heart fa-4x text-secondary mb-3"></i>
+                                    <h4>No organ requests found</h4>
+                                    <p class="mb-4">You haven't submitted any organ requests yet.</p>
+                                    <a href="{{ url_for('user.request_organ') }}" class="btn btn-success">
+                                        <i class="fas fa-plus me-1"></i> Request Organ
+                                    </a>
+                                </div>
+                            {% endif %}
+                        </div>
+                        
+                        <!-- Blood Requests Tab -->
+                        <div class="tab-pane fade" id="blood-requests" role="tabpanel" aria-labelledby="blood-requests-tab">
+                            <div class="d-flex justify-content-end mb-3">
+                                <a href="{{ url_for('user.request_blood') }}" class="btn btn-info">
+                                    <i class="fas fa-plus me-1"></i> Request Blood
+                                </a>
+                            </div>
+                            
+                            {% if blood_requests %}
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Blood Group</th>
+                                                <th>Quantity (ml)</th>
+                                                <th>Urgency</th>
+                                                <th>Status</th>
+                                                <th>Date Requested</th>
+                                                <th>Matched Donation</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for request in blood_requests %}
+                                            <tr>
+                                                <td>{{ request.id }}</td>
+                                                <td>{{ request.blood_group }}</td>
+                                                <td>{{ request.quantity_ml }}</td>
+                                                <td>
+                                                    <span class="badge {% if request.urgency_level == 'critical' %}bg-danger{% elif request.urgency_level == 'urgent' %}bg-warning{% else %}bg-info{% endif %}">
+                                                        {{ request.urgency_level|capitalize }}
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span class="badge {% if request.status == 'pending' %}bg-warning{% elif request.status == 'approved' %}bg-info{% elif request.status == 'fulfilled' %}bg-success{% else %}bg-danger{% endif %}">
+                                                        {{ request.status|capitalize }}
+                                                    </span>
+                                                </td>
+                                                <td>{{ request.date_requested.strftime('%Y-%m-%d') }}</td>
+                                                <td>
+                                                    {% if request.matched_donation %}
+                                                        <span class="text-success">Matched</span>
+                                                    {% else %}
+                                                        <span class="text-warning">Pending</span>
+                                                    {% endif %}
+                                                </td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            {% else %}
+                                <div class="text-center py-5">
+                                    <i class="fas fa-hand-holding-water fa-4x text-secondary mb-3"></i>
+                                    <h4>No blood requests found</h4>
+                                    <p class="mb-4">You haven't submitted any blood requests yet.</p>
+                                    <a href="{{ url_for('user.request_blood') }}" class="btn btn-info">
+                                        <i class="fas fa-plus me-1"></i> Request Blood
+                                    </a>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Status Information -->
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <div class="card bg-dark animate-on-scroll" data-animation="slide-in-up">
+                <div class="card-header bg-info">
+                    <h4 class="mb-0"><i class="fas fa-info-circle me-2"></i>Understanding Request Status</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>Status Definitions</h5>
+                            <ul class="list-group list-group-flush bg-dark">
+                                <li class="list-group-item bg-dark d-flex align-items-center">
+                                    <span class="badge bg-warning me-2">Pending</span>
+                                    <span>Your request is being reviewed by our team</span>
+                                </li>
+                                <li class="list-group-item bg-dark d-flex align-items-center">
+                                    <span class="badge bg-info me-2">Approved</span>
+                                    <span>Your request has been approved and matched with a donor</span>
+                                </li>
+                                <li class="list-group-item bg-dark d-flex align-items-center">
+                                    <span class="badge bg-success me-2">Fulfilled</span>
+                                    <span>Your request has been successfully fulfilled</span>
+                                </li>
+                                <li class="list-group-item bg-dark d-flex align-items-center">
+                                    <span class="badge bg-danger me-2">Unavailable</span>
+                                    <span>We couldn't fulfill your request at this time</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h5>Request Process</h5>
+                            <div class="card bg-secondary mb-2">
+                                <div class="card-body">
+                                    <h6 class="card-title">1. Review Phase</h6>
+                                    <p class="card-text">Your request is initially reviewed by our medical team to verify all information and assess priority.</p>
+                                </div>
+                            </div>
+                            <div class="card bg-secondary mb-2">
+                                <div class="card-body">
+                                    <h6 class="card-title">2. Matching Phase</h6>
+                                    <p class="card-text">We search for compatible donors in our database based on blood type, tissue compatibility, and other factors.</p>
+                                </div>
+                            </div>
+                            <div class="card bg-secondary">
+                                <div class="card-body">
+                                    <h6 class="card-title">3. Fulfillment Phase</h6>
+                                    <p class="card-text">Once a match is found, we coordinate between you and the medical team to arrange the treatment.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

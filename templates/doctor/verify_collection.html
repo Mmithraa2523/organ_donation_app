@@ -1,0 +1,137 @@
+{% extends 'layout.html' %}
+
+{% block title %}Verify Organ Collection - Organ & Blood Donation System{% endblock %}
+
+{% block content %}
+<section class="container py-4">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb bg-dark">
+                    <li class="breadcrumb-item"><a href="{{ url_for('doctor.dashboard') }}">Dashboard</a></li>
+                    <li class="breadcrumb-item"><a href="{{ url_for('doctor.organ_collections') }}">Organ Collections</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Verify Collection</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-6 col-md-8 mx-auto">
+            <div class="card bg-dark animate-on-scroll" data-animation="fade-in">
+                <div class="card-header bg-success text-white text-center py-3">
+                    <h3 class="mb-0"><i class="fas fa-check-circle me-2"></i>Verify Organ Collection</h3>
+                </div>
+                <div class="card-body p-4">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-envelope fa-3x text-success mb-3"></i>
+                        <h4 class="text-light">Email Verification</h4>
+                        
+                        <div class="alert alert-info">
+                            <p class="lead mb-1">We've sent an OTP to the donor's email</p>
+                            <p>Please ask the donor to check their email and provide the 6-digit code</p>
+                        </div>
+                        
+                        {% if session.email_sent_success == False %}
+                        <div class="alert alert-warning mt-3">
+                            <p><i class="fas fa-exclamation-triangle me-2"></i>We were unable to send the email. Please use the resend button below or contact support if the problem persists.</p>
+                        </div>
+                        {% endif %}
+                        
+
+                    </div>
+                    
+                    <div class="card bg-dark border-secondary mb-4">
+                        <div class="card-header bg-secondary text-white">
+                            <h5 class="mb-0"><i class="fas fa-info-circle me-2"></i>Donation Details</h5>
+                        </div>
+                        <div class="card-body">
+                            <dl class="row">
+                                <dt class="col-sm-4">Donor:</dt>
+                                <dd class="col-sm-8">{{ donor.username }}</dd>
+                                
+                                <dt class="col-sm-4">Organ Type:</dt>
+                                <dd class="col-sm-8">{{ donation.organ_type|capitalize }}</dd>
+                                
+                                <dt class="col-sm-4">Blood Group:</dt>
+                                <dd class="col-sm-8">{{ donation.blood_group }}</dd>
+                                
+                                <dt class="col-sm-4">Date Added:</dt>
+                                <dd class="col-sm-8">{{ donation.date_added.strftime('%b %d, %Y') }}</dd>
+                            </dl>
+                        </div>
+                    </div>
+                    
+                    <form method="POST" action="{{ url_for('doctor.verify_collection', donation_id=donation.id) }}">
+                        {{ form.hidden_tag() }}
+                        
+                        <div class="mb-4">
+                            <label for="otp" class="form-label">{{ form.otp.label }}</label>
+                            {{ form.otp(class="form-control form-control-lg text-center", placeholder="Enter 6-digit OTP") }}
+                            {% if form.otp.errors %}
+                                {% for error in form.otp.errors %}
+                                    <div class="text-danger">{{ error }}</div>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                        
+                        <div class="d-grid gap-2">
+                            {{ form.submit(class="btn btn-success btn-lg") }}
+                            <a href="{{ url_for('doctor.organ_collections') }}" class="btn btn-outline-secondary">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer bg-dark text-center py-3">
+                    <form id="resendForm" method="GET" action="{{ url_for('doctor.verify_collection', donation_id=donation.id) }}">
+                        <button type="submit" class="btn btn-outline-info">
+                            <i class="fas fa-paper-plane me-2"></i>Resend Verification Email
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-6 d-none d-lg-block">
+            <div class="card bg-dark animate-on-scroll" data-animation="slide-in-right">
+                <div class="card-header bg-info">
+                    <h4 class="mb-0"><i class="fas fa-info-circle me-2"></i>About OTP Verification</h4>
+                </div>
+                <div class="card-body">
+                    <h5>Why Email OTP Verification?</h5>
+                    <p>The One-Time Password (OTP) verification system ensures that:</p>
+                    <ul>
+                        <li>The donor is legitimately present for the donation</li>
+                        <li>The donation is voluntary and consensual</li>
+                        <li>There is a digital trail of the donation process</li>
+                        <li>The system maintains complete transparency</li>
+                    </ul>
+                    
+                    <h5>Next Steps After Verification</h5>
+                    <ol>
+                        <li>The system will mark the donation as collected</li>
+                        <li>The donation status will be updated automatically</li>
+                        <li>The admin will be notified of the successful collection</li>
+                        <li>The donor will receive a confirmation email/message</li>
+                        <li>If the donation is already matched to a request, the process will continue to fulfillment</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const resendForm = document.getElementById('resendForm');
+        if (resendForm) {
+            resendForm.addEventListener('submit', function() {
+                const resendBtn = this.querySelector('button');
+                resendBtn.disabled = true;
+                resendBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Sending...';
+            });
+        }
+    });
+</script>
+{% endblock %}

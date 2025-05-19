@@ -1,0 +1,370 @@
+{% extends 'layout.html' %}
+
+{% block title %}Donation Matching - Organ & Blood Donation System{% endblock %}
+
+{% block content %}
+<section class="container py-4">
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <h1 class="mb-3"><i class="fas fa-handshake me-2"></i>Donation Matching</h1>
+            <p class="lead">Match organ and blood donations with requests</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Organ Matches -->
+        <div class="col-lg-6 mb-4">
+            <div class="card bg-dark animate-on-scroll" data-animation="fade-in">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0"><i class="fas fa-heart me-2"></i>Organ Matches</h5>
+                </div>
+                <div class="card-body">
+                    {% if organ_matches %}
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Request ID</th>
+                                        <th>Requester</th>
+                                        <th>Organ Type</th>
+                                        <th>Blood Group</th>
+                                        <th>Donation ID</th>
+                                        <th>Donor</th>
+                                        <th>Compatibility</th>
+                                        <th>Match Score</th>
+                                        <th>Urgency</th>
+                                        <th>Details</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for match in organ_matches %}
+                                    <tr>
+                                        <td>{{ match.request.id }}</td>
+                                        <td>{{ match.request.requester.username }}</td>
+                                        <td>{{ match.request.organ_type|capitalize }}</td>
+                                        <td>{{ match.request.blood_group }}</td>
+                                        <td>{{ match.donation.id }}</td>
+                                        <td>{{ match.donation.donor.username }}</td>
+                                        <td>
+                                            {% if match.compatibility == 'excellent' %}
+                                                <span class="badge bg-success">{{ match.compatibility|capitalize }}</span>
+                                            {% elif match.compatibility == 'very good' %}
+                                                <span class="badge bg-primary">{{ match.compatibility|capitalize }}</span>
+                                            {% elif match.compatibility == 'good' %}
+                                                <span class="badge bg-info">{{ match.compatibility|capitalize }}</span>
+                                            {% elif match.compatibility == 'fair' %}
+                                                <span class="badge bg-warning">{{ match.compatibility|capitalize }}</span>
+                                            {% else %}
+                                                <span class="badge bg-danger">{{ match.compatibility|capitalize }}</span>
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            <div class="progress" style="height: 20px;">
+                                                <div class="progress-bar 
+                                                {% if match.match_score >= 80 %}bg-success
+                                                {% elif match.match_score >= 65 %}bg-primary
+                                                {% elif match.match_score >= 50 %}bg-info
+                                                {% elif match.match_score >= 35 %}bg-warning
+                                                {% else %}bg-danger{% endif %}" 
+                                                role="progressbar" style="width: {{ match.match_score }}%;" 
+                                                aria-valuenow="{{ match.match_score }}" aria-valuemin="0" aria-valuemax="100">{{ match.match_score }}%</div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="progress" style="height: 20px;">
+                                                <div class="progress-bar 
+                                                {% if match.urgency_score >= 80 %}bg-danger
+                                                {% elif match.urgency_score >= 60 %}bg-warning
+                                                {% elif match.urgency_score >= 40 %}bg-info
+                                                {% else %}bg-success{% endif %}" 
+                                                role="progressbar" style="width: {{ match.urgency_score }}%;" 
+                                                aria-valuenow="{{ match.urgency_score }}" aria-valuemin="0" aria-valuemax="100">{{ match.urgency_score }}%</div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#matchDetailsModal{{ match.request.id }}_{{ match.donation.id }}">
+                                                <i class="fas fa-info-circle me-1"></i> Details
+                                            </button>
+                                            
+                                            <!-- Match Details Modal -->
+                                            <div class="modal fade" id="matchDetailsModal{{ match.request.id }}_{{ match.donation.id }}" tabindex="-1" aria-labelledby="matchDetailsModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog modal-lg">
+                                                    <div class="modal-content bg-dark">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="matchDetailsModalLabel">Match Details</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div class="row">
+                                                                <div class="col-md-6 mb-3">
+                                                                    <div class="card bg-secondary">
+                                                                        <div class="card-header">
+                                                                            <h5>Recipient Details</h5>
+                                                                        </div>
+                                                                        <div class="card-body">
+                                                                            <p><strong>Name:</strong> {{ match.request.requester.username }}</p>
+                                                                            <p><strong>Age:</strong> {{ match.request.patient_age or 'Not provided' }}</p>
+                                                                            <p><strong>Blood Group:</strong> {{ match.request.blood_group }}</p>
+                                                                            <p><strong>HLA Type:</strong> {{ match.request.hla_type or 'Not provided' }}</p>
+                                                                            <p><strong>Medical Condition:</strong> {{ match.request.medical_condition or 'None' }}</p>
+                                                                            <p><strong>Waiting Time:</strong> {{ match.request.waiting_time_days or 0 }} days</p>
+                                                                            <p><strong>Previous Transplants:</strong> {{ match.request.previous_transplants or 0 }}</p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6 mb-3">
+                                                                    <div class="card bg-secondary">
+                                                                        <div class="card-header">
+                                                                            <h5>Donor Details</h5>
+                                                                        </div>
+                                                                        <div class="card-body">
+                                                                            <p><strong>Name:</strong> {{ match.donation.donor.username }}</p>
+                                                                            <p><strong>Age:</strong> {{ match.donation.donor_age or 'Not provided' }}</p>
+                                                                            <p><strong>Blood Group:</strong> {{ match.donation.blood_group }}</p>
+                                                                            <p><strong>HLA Type:</strong> {{ match.donation.hla_type or 'Not provided' }}</p>
+                                                                            <p><strong>Medical Condition:</strong> {{ match.donation.medical_condition or 'None' }}</p>
+                                                                            <p><strong>Living Donor:</strong> {{ 'Yes' if match.donation.is_living_donor else 'No' }}</p>
+                                                                            <p><strong>Tissue Crossmatch:</strong> {{ match.donation.tissue_crossmatch or 'Not tested' }}</p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="card bg-secondary mt-3">
+                                                                <div class="card-header">
+                                                                    <h5>Match Analysis</h5>
+                                                                </div>
+                                                                <div class="card-body">
+                                                                    <p><strong>Match Score:</strong> {{ match.match_score }}%</p>
+                                                                    <p><strong>Urgency Score:</strong> {{ match.urgency_score }}%</p>
+                                                                    <p><strong>Compatibility Rating:</strong> {{ match.compatibility|capitalize }}</p>
+                                                                    <p><strong>Organ Type:</strong> {{ match.request.organ_type|capitalize }}</p>
+                                                                    <p class="mb-3"><strong>Geographic Distance:</strong> 
+                                                                    {% if match.request.location_lat and match.request.location_lng and match.donation.location_lat and match.donation.location_lng %}
+                                                                        Approximately {{ (((match.request.location_lat - match.donation.location_lat)**2 + (match.request.location_lng - match.donation.location_lng)**2)**0.5 * 111.32)|round|int }} km
+                                                                    {% else %}
+                                                                        Unknown
+                                                                    {% endif %}
+                                                                    </p>
+                                                                    <div class="alert alert-info">
+                                                                        <p class="mb-0"><strong>Medical Note:</strong> This match was determined primarily based on blood type compatibility, HLA matching, organ size/age matching, and geographic proximity. Additional tests may be required before final approval.</p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                            <form method="POST" action="{{ url_for('admin.match_organ', request_id=match.request.id, donation_id=match.donation.id) }}" style="display: inline;">
+                                                                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                                                <button type="submit" class="btn btn-success">
+                                                                    <i class="fas fa-link me-1"></i> Confirm Match
+                                                                </button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <form method="POST" action="{{ url_for('admin.match_organ', request_id=match.request.id, donation_id=match.donation.id) }}">
+                                                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                                <button type="submit" class="btn btn-sm btn-success">
+                                                    <i class="fas fa-link me-1"></i> Match
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    {% else %}
+                        <div class="text-center py-5">
+                            <i class="fas fa-heart-broken fa-4x text-secondary mb-3"></i>
+                            <h4>No organ matches found</h4>
+                            <p>There are no compatible organ donations and requests at the moment</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Blood Matches -->
+        <div class="col-lg-6 mb-4">
+            <div class="card bg-dark animate-on-scroll" data-animation="fade-in">
+                <div class="card-header bg-danger text-white">
+                    <h5 class="mb-0"><i class="fas fa-tint me-2"></i>Blood Matches</h5>
+                </div>
+                <div class="card-body">
+                    {% if blood_matches %}
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Request ID</th>
+                                        <th>Requester</th>
+                                        <th>Blood Group</th>
+                                        <th>Quantity</th>
+                                        <th>Donation ID</th>
+                                        <th>Donor</th>
+                                        <th>Compatibility</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for match in blood_matches %}
+                                    <tr>
+                                        <td>{{ match.request.id }}</td>
+                                        <td>{{ match.request.requester.username }}</td>
+                                        <td>{{ match.request.blood_group }}</td>
+                                        <td>{{ match.request.quantity_ml }} ml</td>
+                                        <td>{{ match.donation.id }}</td>
+                                        <td>{{ match.donation.donor.username }}</td>
+                                        <td>
+                                            <span class="badge bg-success">{{ match.compatibility|capitalize }}</span>
+                                        </td>
+                                        <td>
+                                            <form method="POST" action="{{ url_for('admin.match_blood', request_id=match.request.id, donation_id=match.donation.id) }}">
+                                                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                                <button type="submit" class="btn btn-sm btn-success">
+                                                    <i class="fas fa-link me-1"></i> Match
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    {% else %}
+                        <div class="text-center py-5">
+                            <i class="fas fa-tint-slash fa-4x text-secondary mb-3"></i>
+                            <h4>No blood matches found</h4>
+                            <p>There are no compatible blood donations and requests at the moment</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card bg-dark animate-on-scroll" data-animation="fade-in">
+                <div class="card-header bg-info text-white">
+                    <h5 class="mb-0"><i class="fas fa-info-circle me-2"></i>Blood Compatibility Chart</h5>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr class="text-center">
+                                    <th>Recipient</th>
+                                    <th>O-</th>
+                                    <th>O+</th>
+                                    <th>A-</th>
+                                    <th>A+</th>
+                                    <th>B-</th>
+                                    <th>B+</th>
+                                    <th>AB-</th>
+                                    <th>AB+</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th>O-</th>
+                                    <td class="bg-success">Yes</td>
+                                    <td class="bg-danger">No</td>
+                                    <td class="bg-danger">No</td>
+                                    <td class="bg-danger">No</td>
+                                    <td class="bg-danger">No</td>
+                                    <td class="bg-danger">No</td>
+                                    <td class="bg-danger">No</td>
+                                    <td class="bg-danger">No</td>
+                                </tr>
+                                <tr>
+                                    <th>O+</th>
+                                    <td class="bg-success">Yes</td>
+                                    <td class="bg-success">Yes</td>
+                                    <td class="bg-danger">No</td>
+                                    <td class="bg-danger">No</td>
+                                    <td class="bg-danger">No</td>
+                                    <td class="bg-danger">No</td>
+                                    <td class="bg-danger">No</td>
+                                    <td class="bg-danger">No</td>
+                                </tr>
+                                <tr>
+                                    <th>A-</th>
+                                    <td class="bg-success">Yes</td>
+                                    <td class="bg-danger">No</td>
+                                    <td class="bg-success">Yes</td>
+                                    <td class="bg-danger">No</td>
+                                    <td class="bg-danger">No</td>
+                                    <td class="bg-danger">No</td>
+                                    <td class="bg-danger">No</td>
+                                    <td class="bg-danger">No</td>
+                                </tr>
+                                <tr>
+                                    <th>A+</th>
+                                    <td class="bg-success">Yes</td>
+                                    <td class="bg-success">Yes</td>
+                                    <td class="bg-success">Yes</td>
+                                    <td class="bg-success">Yes</td>
+                                    <td class="bg-danger">No</td>
+                                    <td class="bg-danger">No</td>
+                                    <td class="bg-danger">No</td>
+                                    <td class="bg-danger">No</td>
+                                </tr>
+                                <tr>
+                                    <th>B-</th>
+                                    <td class="bg-success">Yes</td>
+                                    <td class="bg-danger">No</td>
+                                    <td class="bg-danger">No</td>
+                                    <td class="bg-danger">No</td>
+                                    <td class="bg-success">Yes</td>
+                                    <td class="bg-danger">No</td>
+                                    <td class="bg-danger">No</td>
+                                    <td class="bg-danger">No</td>
+                                </tr>
+                                <tr>
+                                    <th>B+</th>
+                                    <td class="bg-success">Yes</td>
+                                    <td class="bg-success">Yes</td>
+                                    <td class="bg-danger">No</td>
+                                    <td class="bg-danger">No</td>
+                                    <td class="bg-success">Yes</td>
+                                    <td class="bg-success">Yes</td>
+                                    <td class="bg-danger">No</td>
+                                    <td class="bg-danger">No</td>
+                                </tr>
+                                <tr>
+                                    <th>AB-</th>
+                                    <td class="bg-success">Yes</td>
+                                    <td class="bg-danger">No</td>
+                                    <td class="bg-success">Yes</td>
+                                    <td class="bg-danger">No</td>
+                                    <td class="bg-success">Yes</td>
+                                    <td class="bg-danger">No</td>
+                                    <td class="bg-success">Yes</td>
+                                    <td class="bg-danger">No</td>
+                                </tr>
+                                <tr>
+                                    <th>AB+</th>
+                                    <td class="bg-success">Yes</td>
+                                    <td class="bg-success">Yes</td>
+                                    <td class="bg-success">Yes</td>
+                                    <td class="bg-success">Yes</td>
+                                    <td class="bg-success">Yes</td>
+                                    <td class="bg-success">Yes</td>
+                                    <td class="bg-success">Yes</td>
+                                    <td class="bg-success">Yes</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

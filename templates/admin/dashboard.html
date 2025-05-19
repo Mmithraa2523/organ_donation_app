@@ -1,0 +1,357 @@
+{% extends 'layout.html' %}
+
+{% block title %}Admin Dashboard - Organ & Blood Donation System{% endblock %}
+
+{% block content %}
+<section class="container py-4">
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <h1 class="mb-3"><i class="fas fa-tachometer-alt me-2"></i>Admin Dashboard</h1>
+            <p class="lead">Manage the organ and blood donation system</p>
+        </div>
+    </div>
+
+    <!-- Stats Cards -->
+    <div class="row mb-4">
+        <div class="col-md-3 col-sm-6 mb-3">
+            <div class="card bg-primary text-white h-100 animate-on-scroll" data-animation="fade-in">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h5 class="card-title">Users</h5>
+                            <h2 class="display-6">{{ users_count }}</h2>
+                        </div>
+                        <i class="fas fa-users fa-3x"></i>
+                    </div>
+                </div>
+                <div class="card-footer d-flex justify-content-between align-items-center">
+                    <a href="{{ url_for('admin.users') }}" class="text-white">View Details</a>
+                    <i class="fas fa-arrow-circle-right"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 col-sm-6 mb-3">
+            <div class="card bg-success text-white h-100 animate-on-scroll" data-animation="fade-in">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h5 class="card-title">Doctors</h5>
+                            <h2 class="display-6">{{ doctors_count }}</h2>
+                        </div>
+                        <i class="fas fa-user-md fa-3x"></i>
+                    </div>
+                </div>
+                <div class="card-footer d-flex justify-content-between align-items-center">
+                    <a href="{{ url_for('admin.doctors') }}" class="text-white">View Details</a>
+                    <i class="fas fa-arrow-circle-right"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 col-sm-6 mb-3">
+            <div class="card bg-info text-white h-100 animate-on-scroll" data-animation="fade-in">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h5 class="card-title">Hospitals</h5>
+                            <h2 class="display-6">{{ hospitals_count }}</h2>
+                        </div>
+                        <i class="fas fa-hospital fa-3x"></i>
+                    </div>
+                </div>
+                <div class="card-footer d-flex justify-content-between align-items-center">
+                    <a href="{{ url_for('admin.hospitals') }}" class="text-white">View Details</a>
+                    <i class="fas fa-arrow-circle-right"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 col-sm-6 mb-3">
+            <div class="card bg-warning text-white h-100 animate-on-scroll" data-animation="fade-in">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h5 class="card-title">Matches</h5>
+                            <h2 class="display-6">{{ matches_count }}</h2>
+                        </div>
+                        <i class="fas fa-handshake fa-3x"></i>
+                    </div>
+                </div>
+                <div class="card-footer d-flex justify-content-between align-items-center">
+                    <a href="{{ url_for('admin.matching') }}" class="text-white">View Details</a>
+                    <i class="fas fa-arrow-circle-right"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Donation Stats -->
+    <div class="row mb-4">
+        <div class="col-md-3 col-sm-6 mb-3">
+            <div class="card bg-danger text-white h-100 animate-on-scroll" data-animation="slide-in-left">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h5 class="card-title">Organ Donations</h5>
+                            <h2 class="display-6">{{ organ_donations_count }}</h2>
+                        </div>
+                        <i class="fas fa-heart fa-3x heart-icon"></i>
+                    </div>
+                </div>
+                <div class="card-footer d-flex justify-content-between align-items-center">
+                    <a href="{{ url_for('admin.organ_donations') }}" class="text-white">View Details</a>
+                    <i class="fas fa-arrow-circle-right"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 col-sm-6 mb-3">
+            <div class="card bg-secondary text-white h-100 animate-on-scroll" data-animation="slide-in-left">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h5 class="card-title">Organ Requests</h5>
+                            <h2 class="display-6">{{ organ_requests_count }}</h2>
+                        </div>
+                        <i class="fas fa-hand-holding-heart fa-3x"></i>
+                    </div>
+                </div>
+                <div class="card-footer d-flex justify-content-between align-items-center">
+                    <a href="{{ url_for('admin.organ_requests') }}" class="text-white">View Details</a>
+                    <i class="fas fa-arrow-circle-right"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 col-sm-6 mb-3">
+            <div class="card bg-danger text-white h-100 animate-on-scroll" data-animation="slide-in-right">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h5 class="card-title">Blood Donations</h5>
+                            <h2 class="display-6">{{ blood_donations_count }}</h2>
+                        </div>
+                        <i class="fas fa-tint fa-3x"></i>
+                    </div>
+                </div>
+                <div class="card-footer d-flex justify-content-between align-items-center">
+                    <a href="{{ url_for('admin.blood_donations') }}" class="text-white">View Details</a>
+                    <i class="fas fa-arrow-circle-right"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 col-sm-6 mb-3">
+            <div class="card bg-secondary text-white h-100 animate-on-scroll" data-animation="slide-in-right">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h5 class="card-title">Blood Requests</h5>
+                            <h2 class="display-6">{{ blood_requests_count }}</h2>
+                        </div>
+                        <i class="fas fa-hand-holding-water fa-3x"></i>
+                    </div>
+                </div>
+                <div class="card-footer d-flex justify-content-between align-items-center">
+                    <a href="{{ url_for('admin.blood_requests') }}" class="text-white">View Details</a>
+                    <i class="fas fa-arrow-circle-right"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recent Activities -->
+    <div class="row">
+        <div class="col-lg-6 mb-4">
+            <div class="card bg-dark animate-on-scroll" data-animation="bounce-in">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0"><i class="fas fa-heart me-2"></i>Recent Organ Donations</h5>
+                </div>
+                <div class="card-body">
+                    {% if recent_organ_donations %}
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Donor</th>
+                                        <th>Organ Type</th>
+                                        <th>Blood Group</th>
+                                        <th>Status</th>
+                                        <th>Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for donation in recent_organ_donations %}
+                                    <tr>
+                                        <td>{{ donation.donor.username }}</td>
+                                        <td>{{ donation.organ_type }}</td>
+                                        <td>{{ donation.blood_group }}</td>
+                                        <td>
+                                            <span class="badge {% if donation.status == 'pending' %}bg-warning{% elif donation.status == 'approved' %}bg-info{% elif donation.status == 'collected' %}bg-success{% else %}bg-danger{% endif %}">
+                                                {{ donation.status|capitalize }}
+                                            </span>
+                                        </td>
+                                        <td>{{ donation.date_added.strftime('%Y-%m-%d') }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    {% else %}
+                        <p class="text-center">No recent organ donations.</p>
+                    {% endif %}
+                    <div class="text-center mt-3">
+                        <a href="{{ url_for('admin.organ_donations') }}" class="btn btn-primary">View All</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6 mb-4">
+            <div class="card bg-dark animate-on-scroll" data-animation="bounce-in">
+                <div class="card-header bg-danger text-white">
+                    <h5 class="mb-0"><i class="fas fa-tint me-2"></i>Recent Blood Donations</h5>
+                </div>
+                <div class="card-body">
+                    {% if recent_blood_donations %}
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Donor</th>
+                                        <th>Blood Group</th>
+                                        <th>Quantity (ml)</th>
+                                        <th>Status</th>
+                                        <th>Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for donation in recent_blood_donations %}
+                                    <tr>
+                                        <td>{{ donation.donor.username }}</td>
+                                        <td>{{ donation.blood_group }}</td>
+                                        <td>{{ donation.quantity_ml }}</td>
+                                        <td>
+                                            <span class="badge {% if donation.status == 'pending' %}bg-warning{% elif donation.status == 'approved' %}bg-info{% elif donation.status == 'collected' %}bg-success{% else %}bg-danger{% endif %}">
+                                                {{ donation.status|capitalize }}
+                                            </span>
+                                        </td>
+                                        <td>{{ donation.date_added.strftime('%Y-%m-%d') }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    {% else %}
+                        <p class="text-center">No recent blood donations.</p>
+                    {% endif %}
+                    <div class="text-center mt-3">
+                        <a href="{{ url_for('admin.blood_donations') }}" class="btn btn-danger">View All</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-6 mb-4">
+            <div class="card bg-dark animate-on-scroll" data-animation="bounce-in">
+                <div class="card-header bg-secondary text-white">
+                    <h5 class="mb-0"><i class="fas fa-hand-holding-heart me-2"></i>Recent Organ Requests</h5>
+                </div>
+                <div class="card-body">
+                    {% if recent_organ_requests %}
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Requester</th>
+                                        <th>Organ Type</th>
+                                        <th>Blood Group</th>
+                                        <th>Urgency</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for request in recent_organ_requests %}
+                                    <tr>
+                                        <td>{{ request.requester.username }}</td>
+                                        <td>{{ request.organ_type }}</td>
+                                        <td>{{ request.blood_group }}</td>
+                                        <td>
+                                            <span class="badge {% if request.urgency_level == 'critical' %}bg-danger{% elif request.urgency_level == 'urgent' %}bg-warning{% else %}bg-info{% endif %}">
+                                                {{ request.urgency_level|capitalize }}
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span class="badge {% if request.status == 'pending' %}bg-warning{% elif request.status == 'approved' %}bg-info{% elif request.status == 'fulfilled' %}bg-success{% else %}bg-danger{% endif %}">
+                                                {{ request.status|capitalize }}
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    {% else %}
+                        <p class="text-center">No recent organ requests.</p>
+                    {% endif %}
+                    <div class="text-center mt-3">
+                        <a href="{{ url_for('admin.organ_requests') }}" class="btn btn-secondary">View All</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6 mb-4">
+            <div class="card bg-dark animate-on-scroll" data-animation="bounce-in">
+                <div class="card-header bg-secondary text-white">
+                    <h5 class="mb-0"><i class="fas fa-hand-holding-water me-2"></i>Recent Blood Requests</h5>
+                </div>
+                <div class="card-body">
+                    {% if recent_blood_requests %}
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Requester</th>
+                                        <th>Blood Group</th>
+                                        <th>Quantity (ml)</th>
+                                        <th>Urgency</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for request in recent_blood_requests %}
+                                    <tr>
+                                        <td>{{ request.requester.username }}</td>
+                                        <td>{{ request.blood_group }}</td>
+                                        <td>{{ request.quantity_ml }}</td>
+                                        <td>
+                                            <span class="badge {% if request.urgency_level == 'critical' %}bg-danger{% elif request.urgency_level == 'urgent' %}bg-warning{% else %}bg-info{% endif %}">
+                                                {{ request.urgency_level|capitalize }}
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span class="badge {% if request.status == 'pending' %}bg-warning{% elif request.status == 'approved' %}bg-info{% elif request.status == 'fulfilled' %}bg-success{% else %}bg-danger{% endif %}">
+                                                {{ request.status|capitalize }}
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    {% else %}
+                        <p class="text-center">No recent blood requests.</p>
+                    {% endif %}
+                    <div class="text-center mt-3">
+                        <a href="{{ url_for('admin.blood_requests') }}" class="btn btn-secondary">View All</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

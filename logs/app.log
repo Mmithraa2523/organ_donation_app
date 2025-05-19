@@ -1,0 +1,813 @@
+2025-04-04 20:09:10,714 DEBUG: Doctor collections page accessed by: Ramesh, ID: 1 [in /home/runner/workspace/routes/doctor.py:96]
+2025-04-04 20:09:10,773 DEBUG: Found 1 assigned collections [in /home/runner/workspace/routes/doctor.py:100]
+2025-04-04 20:09:10,832 DEBUG: Donation ID: 1, Status: approved, OTP: None, Verified: False, Donor: Mithraa [in /home/runner/workspace/routes/doctor.py:104]
+2025-04-04 20:09:29,904 DEBUG: Doctor collections page accessed by: Ramesh, ID: 1 [in /home/runner/workspace/routes/doctor.py:96]
+2025-04-04 20:09:29,961 DEBUG: Found 1 assigned collections [in /home/runner/workspace/routes/doctor.py:100]
+2025-04-04 20:09:30,017 DEBUG: Donation ID: 1, Status: approved, OTP: None, Verified: False, Donor: Mithraa [in /home/runner/workspace/routes/doctor.py:104]
+2025-04-04 20:13:39,198 DEBUG: Doctor collections page accessed by: Ramesh, ID: 1 [in /home/runner/workspace/routes/doctor.py:96]
+2025-04-04 20:13:39,257 DEBUG: Found 1 assigned collections [in /home/runner/workspace/routes/doctor.py:100]
+2025-04-04 20:13:39,315 DEBUG: Donation ID: 1, Status: approved, OTP: None, Verified: False, Donor: Mithraa [in /home/runner/workspace/routes/doctor.py:104]
+2025-04-04 20:17:18,264 DEBUG: Doctor collections page accessed by: Ramesh, ID: 1 [in /home/runner/workspace/routes/doctor.py:96]
+2025-04-04 20:17:18,329 DEBUG: Found 1 assigned collections [in /home/runner/workspace/routes/doctor.py:100]
+2025-04-04 20:17:18,693 INFO: Attempting to send OTP email to: mithraa1906@gmail.com [in /home/runner/workspace/utils.py:18]
+2025-04-04 20:17:18,693 INFO: FOR TESTING ONLY - USER: Mithraa, OTP: 728270 [in /home/runner/workspace/utils.py:49]
+2025-04-04 20:17:19,646 INFO: Successfully sent OTP email to: mithraa1906@gmail.com [in /home/runner/workspace/utils.py:55]
+2025-04-04 20:17:19,647 DEBUG: Donation ID: 1, Status: approved, OTP: 728270, Verified: False, Donor: Mithraa [in /home/runner/workspace/routes/doctor.py:115]
+2025-04-04 20:17:43,129 DEBUG: Doctor collections page accessed by: Ramesh, ID: 1 [in /home/runner/workspace/routes/doctor.py:96]
+2025-04-04 20:17:43,187 DEBUG: Found 1 assigned collections [in /home/runner/workspace/routes/doctor.py:100]
+2025-04-04 20:17:43,247 DEBUG: Donation ID: 1, Status: approved, OTP: 728270, Verified: False, Donor: Mithraa [in /home/runner/workspace/routes/doctor.py:115]
+2025-04-04 20:21:45,268 DEBUG: Doctor collections page accessed by: Ramesh, ID: 1 [in /home/runner/workspace/routes/doctor.py:96]
+2025-04-04 20:21:45,328 DEBUG: Found 1 assigned collections [in /home/runner/workspace/routes/doctor.py:100]
+2025-04-04 20:21:45,388 DEBUG: Donation ID: 1, Status: approved, OTP: 728270, Verified: False, Donor: Mithraa [in /home/runner/workspace/routes/doctor.py:115]
+2025-04-04 20:22:31,886 DEBUG: Starting verify_collection for donation_id: 1 [in /home/runner/workspace/routes/doctor.py:130]
+2025-04-04 20:22:31,952 DEBUG: Doctor handling verification: Ramesh, ID: 1 [in /home/runner/workspace/routes/doctor.py:134]
+2025-04-04 20:22:32,013 DEBUG: Found donation: 1, status: approved, OTP: 728270, verified: False [in /home/runner/workspace/routes/doctor.py:138]
+2025-04-04 20:22:32,013 DEBUG: Form data: ImmutableMultiDict([('csrf_token', 'IjU0MmExMGRiY2IwYjJkNzRmMWEzNjZkZmFkMzIxODczNjFlNDA3ODYi.Z_A_WQ.WzZH5pOWv-Ju522SqDQdfL4ZXFQ'), ('otp', '123456'), ('submit', 'Verify & Collect')]) [in /home/runner/workspace/routes/doctor.py:147]
+2025-04-04 20:22:32,013 DEBUG: Form validated, OTP entered: 123456 [in /home/runner/workspace/routes/doctor.py:166]
+2025-04-04 20:22:32,014 DEBUG: OTP mismatch: Expected 728270, got 123456 [in /home/runner/workspace/routes/doctor.py:177]
+2025-04-04 20:22:32,014 DEBUG: Redirecting to organ_collections [in /home/runner/workspace/routes/doctor.py:184]
+2025-04-04 20:22:32,595 DEBUG: Doctor collections page accessed by: Ramesh, ID: 1 [in /home/runner/workspace/routes/doctor.py:96]
+2025-04-04 20:22:32,655 DEBUG: Found 1 assigned collections [in /home/runner/workspace/routes/doctor.py:100]
+2025-04-04 20:22:32,715 DEBUG: Donation ID: 1, Status: approved, OTP: 728270, Verified: False, Donor: Mithraa [in /home/runner/workspace/routes/doctor.py:115]
+2025-04-04 20:28:14,671 DEBUG: Doctor collections page accessed by: Ramesh, ID: 1 [in /home/runner/workspace/routes/doctor.py:96]
+2025-04-04 20:28:14,730 DEBUG: Found 1 assigned collections [in /home/runner/workspace/routes/doctor.py:100]
+2025-04-04 20:28:14,789 DEBUG: Donation ID: 1, Status: approved, OTP: 728270, Verified: False, Donor: Mithraa [in /home/runner/workspace/routes/doctor.py:115]
+2025-04-04 20:28:26,829 DEBUG: Starting verify_collection for donation_id: 1 [in /home/runner/workspace/routes/doctor.py:130]
+2025-04-04 20:28:26,890 DEBUG: Doctor handling verification: Ramesh, ID: 1 [in /home/runner/workspace/routes/doctor.py:134]
+2025-04-04 20:28:26,950 DEBUG: Found donation: 1, status: approved, OTP: 728270, verified: False [in /home/runner/workspace/routes/doctor.py:138]
+2025-04-04 20:28:26,951 DEBUG: Form data: ImmutableMultiDict([('csrf_token', 'IjU0MmExMGRiY2IwYjJkNzRmMWEzNjZkZmFkMzIxODczNjFlNDA3ODYi.Z_BA3g.PP1-gMsa8gk8lPODG2PhkvU2aOs'), ('otp', '728270'), ('submit', 'Verify & Collect')]) [in /home/runner/workspace/routes/doctor.py:147]
+2025-04-04 20:28:26,951 DEBUG: Form validated, OTP entered: 728270 [in /home/runner/workspace/routes/doctor.py:166]
+2025-04-04 20:28:26,951 DEBUG: OTP match successful! [in /home/runner/workspace/routes/doctor.py:169]
+2025-04-04 20:28:27,077 DEBUG: Redirecting to organ_collections [in /home/runner/workspace/routes/doctor.py:184]
+2025-04-04 20:28:27,823 DEBUG: Doctor collections page accessed by: Ramesh, ID: 1 [in /home/runner/workspace/routes/doctor.py:96]
+2025-04-04 20:28:27,882 DEBUG: Found 1 assigned collections [in /home/runner/workspace/routes/doctor.py:100]
+2025-04-04 20:28:27,943 DEBUG: Donation ID: 1, Status: collected, OTP: 728270, Verified: True, Donor: Mithraa [in /home/runner/workspace/routes/doctor.py:115]
+2025-04-05 09:21:59,116 DEBUG: Found 0 organ matches and 1 blood matches [in /home/runner/workspace/routes/admin.py:271]
+2025-04-05 09:27:12,714 ERROR: Exception on /admin/dashboard [GET] [in /home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/flask/app.py:875]
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1964, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 945, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.UndefinedColumn: column organ_donation.donor_age does not exist
+LINE 2: ...dditional_info AS organ_donation_additional_info, organ_dona...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/routes/admin.py", line 21, in decorated_function
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/routes/admin.py", line 35, in dashboard
+    organ_donations_count = OrganDonation.query.count()
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/query.py", line 3147, in count
+    self._legacy_from_self(col).enable_eagerloads(False).scalar()
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/query.py", line 2836, in scalar
+    ret = self.one()
+          ^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/query.py", line 2809, in one
+    return self._iter().one()  # type: ignore
+           ^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/query.py", line 2858, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+                                                  ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 2365, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 2251, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1416, in execute
+    return meth(
+           ^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/sql/elements.py", line 523, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1638, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1843, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1983, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 2352, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1964, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 945, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.UndefinedColumn) column organ_donation.donor_age does not exist
+LINE 2: ...dditional_info AS organ_donation_additional_info, organ_dona...
+                                                             ^
+
+[SQL: SELECT count(*) AS count_1 
+FROM (SELECT organ_donation.id AS organ_donation_id, organ_donation.user_id AS organ_donation_user_id, organ_donation.organ_type AS organ_donation_organ_type, organ_donation.blood_group AS organ_donation_blood_group, organ_donation.status AS organ_donation_status, organ_donation.date_added AS organ_donation_date_added, organ_donation.collection_date AS organ_donation_collection_date, organ_donation.collection_doctor_id AS organ_donation_collection_doctor_id, organ_donation.otp AS organ_donation_otp, organ_donation.otp_verified AS organ_donation_otp_verified, organ_donation.additional_info AS organ_donation_additional_info, organ_donation.donor_age AS organ_donation_donor_age, organ_donation.hla_type AS organ_donation_hla_type, organ_donation.tissue_crossmatch AS organ_donation_tissue_crossmatch, organ_donation.location_lat AS organ_donation_location_lat, organ_donation.location_lng AS organ_donation_location_lng, organ_donation.is_living_donor AS organ_donation_is_living_donor, organ_donation.medical_condition AS organ_donation_medical_condition 
+FROM organ_donation) AS anon_1]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-04-05 09:27:20,426 ERROR: Exception on /admin/dashboard [GET] [in /home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/flask/app.py:875]
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1964, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 945, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.UndefinedColumn: column organ_donation.donor_age does not exist
+LINE 2: ...dditional_info AS organ_donation_additional_info, organ_dona...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/routes/admin.py", line 21, in decorated_function
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/routes/admin.py", line 35, in dashboard
+    organ_donations_count = OrganDonation.query.count()
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/query.py", line 3147, in count
+    self._legacy_from_self(col).enable_eagerloads(False).scalar()
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/query.py", line 2836, in scalar
+    ret = self.one()
+          ^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/query.py", line 2809, in one
+    return self._iter().one()  # type: ignore
+           ^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/query.py", line 2858, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+                                                  ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 2365, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 2251, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/orm/context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1416, in execute
+    return meth(
+           ^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/sql/elements.py", line 523, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1638, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1843, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1983, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 2352, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1964, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 945, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.UndefinedColumn) column organ_donation.donor_age does not exist
+LINE 2: ...dditional_info AS organ_donation_additional_info, organ_dona...
+                                                             ^
+
+[SQL: SELECT count(*) AS count_1 
+FROM (SELECT organ_donation.id AS organ_donation_id, organ_donation.user_id AS organ_donation_user_id, organ_donation.organ_type AS organ_donation_organ_type, organ_donation.blood_group AS organ_donation_blood_group, organ_donation.status AS organ_donation_status, organ_donation.date_added AS organ_donation_date_added, organ_donation.collection_date AS organ_donation_collection_date, organ_donation.collection_doctor_id AS organ_donation_collection_doctor_id, organ_donation.otp AS organ_donation_otp, organ_donation.otp_verified AS organ_donation_otp_verified, organ_donation.additional_info AS organ_donation_additional_info, organ_donation.donor_age AS organ_donation_donor_age, organ_donation.hla_type AS organ_donation_hla_type, organ_donation.tissue_crossmatch AS organ_donation_tissue_crossmatch, organ_donation.location_lat AS organ_donation_location_lat, organ_donation.location_lng AS organ_donation_location_lng, organ_donation.is_living_donor AS organ_donation_is_living_donor, organ_donation.medical_condition AS organ_donation_medical_condition 
+FROM organ_donation) AS anon_1]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-04-05 09:30:08,579 DEBUG: Advanced matching algorithm found 0 potential organ matches [in /home/runner/workspace/utils.py:382]
+2025-04-05 09:30:22,324 DEBUG: Advanced matching algorithm found 0 potential organ matches [in /home/runner/workspace/utils.py:382]
+2025-04-05 09:30:22,441 DEBUG: Found 0 organ matches and 1 blood matches [in /home/runner/workspace/routes/admin.py:271]
+2025-04-05 10:43:40,766 INFO: FOR TESTING ONLY - USER: suriya, OTP: 044005 [in /home/runner/workspace/utils.py:136]
+2025-04-05 10:43:40,769 INFO: Attempting to send notification email to: mithraaj23@gmail.com [in /home/runner/workspace/utils.py:29]
+2025-04-05 10:43:41,669 INFO: Successfully sent notification email to: mithraaj23@gmail.com [in /home/runner/workspace/utils.py:43]
+2025-04-05 10:47:05,563 INFO: FOR TESTING ONLY - USER: hari, OTP: 039958 [in /home/runner/workspace/utils.py:136]
+2025-04-05 10:47:05,563 INFO: Attempting to send notification email to: mithraaj23025@gmail.com [in /home/runner/workspace/utils.py:29]
+2025-04-05 10:47:06,446 INFO: Successfully sent notification email to: mithraaj23025@gmail.com [in /home/runner/workspace/utils.py:43]
+2025-04-05 10:50:35,308 INFO: FOR TESTING ONLY - USER: harish, OTP: 295585 [in /home/runner/workspace/utils.py:136]
+2025-04-05 10:50:35,308 INFO: Attempting to send notification email to: keerthi190612@gmail.com [in /home/runner/workspace/utils.py:29]
+2025-04-05 10:50:36,203 INFO: Successfully sent notification email to: keerthi190612@gmail.com [in /home/runner/workspace/utils.py:43]
+2025-04-05 10:53:20,180 DEBUG: Advanced matching algorithm found 0 potential organ matches [in /home/runner/workspace/utils.py:456]
+2025-04-05 10:53:31,277 DEBUG: Advanced matching algorithm found 0 potential organ matches [in /home/runner/workspace/utils.py:456]
+2025-04-05 10:53:31,395 DEBUG: Found 0 organ matches and 1 blood matches [in /home/runner/workspace/routes/admin.py:271]
+2025-04-05 10:53:41,285 DEBUG: Advanced matching algorithm found 0 potential organ matches [in /home/runner/workspace/utils.py:456]
+2025-04-05 10:54:39,303 DEBUG: Advanced matching algorithm found 0 potential organ matches [in /home/runner/workspace/utils.py:456]
+2025-04-05 10:55:29,945 INFO: FOR TESTING ONLY - USER: suriya, OTP: 091385 [in /home/runner/workspace/utils.py:136]
+2025-04-05 10:55:29,946 INFO: Attempting to send notification email to: mithraaj23@gmail.com [in /home/runner/workspace/utils.py:29]
+2025-04-05 10:55:30,816 INFO: Successfully sent notification email to: mithraaj23@gmail.com [in /home/runner/workspace/utils.py:43]
+2025-04-05 10:56:48,974 DEBUG: Doctor blood collections page accessed by: Ramesh, ID: 1 [in /home/runner/workspace/routes/doctor.py:264]
+2025-04-05 10:56:49,034 DEBUG: Found 1 blood collections [in /home/runner/workspace/routes/doctor.py:268]
+2025-04-05 10:56:49,392 INFO: FOR TESTING ONLY - USER: Mithraa, OTP: 847030 [in /home/runner/workspace/utils.py:136]
+2025-04-05 10:56:49,392 INFO: Attempting to send notification email to: mithraa1906@gmail.com [in /home/runner/workspace/utils.py:29]
+2025-04-05 10:56:50,247 INFO: Successfully sent notification email to: mithraa1906@gmail.com [in /home/runner/workspace/utils.py:43]
+2025-04-05 10:56:50,247 DEBUG: Blood Donation ID: 1, Status: approved, OTP: 847030, Verified: False, Donor: Mithraa [in /home/runner/workspace/routes/doctor.py:283]
+2025-04-05 10:56:50,257 ERROR: Exception on /doctor/blood-collections [GET] [in /home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/flask/app.py:875]
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/routes/doctor.py", line 19, in decorated_function
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/routes/doctor.py", line 290, in blood_collections
+    return render_template('doctor/blood_collections.html',
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/flask/templating.py", line 149, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/jinja2/environment.py", line 1087, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/jinja2/environment.py", line 1016, in get_template
+    return self._load_template(name, globals)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/jinja2/environment.py", line 975, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/jinja2/loaders.py", line 138, in load
+    code = environment.compile(source, name, filename)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/jinja2/environment.py", line 771, in compile
+    self.handle_exception(source=source_hint)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/home/runner/workspace/templates/doctor/blood_collections.html", line 187, in template
+    {% endif %}
+jinja2.exceptions.TemplateSyntaxError: Encountered unknown tag 'endif'. You probably made a nesting mistake. Jinja is expecting this tag, but currently looking for 'endfor'. The innermost block that needs to be closed is 'for'.
+2025-04-05 10:57:05,975 DEBUG: Doctor collections page accessed by: Ramesh, ID: 1 [in /home/runner/workspace/routes/doctor.py:127]
+2025-04-05 10:57:06,041 DEBUG: Found 2 assigned collections [in /home/runner/workspace/routes/doctor.py:131]
+2025-04-05 10:57:06,104 DEBUG: Donation ID: 1, Status: collected, OTP: 728270, Verified: True, Donor: Mithraa [in /home/runner/workspace/routes/doctor.py:146]
+2025-04-05 10:57:06,167 DEBUG: Donation ID: 2, Status: approved, OTP: 091385, Verified: False, Donor: suriya [in /home/runner/workspace/routes/doctor.py:146]
+2025-04-05 10:57:06,173 ERROR: Exception on /doctor/organ-collections [GET] [in /home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/flask/app.py:875]
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/routes/doctor.py", line 19, in decorated_function
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/routes/doctor.py", line 153, in organ_collections
+    return render_template('doctor/organ_collections.html',
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/flask/templating.py", line 149, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/jinja2/environment.py", line 1087, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/jinja2/environment.py", line 1016, in get_template
+    return self._load_template(name, globals)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/jinja2/environment.py", line 975, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/jinja2/loaders.py", line 138, in load
+    code = environment.compile(source, name, filename)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/jinja2/environment.py", line 771, in compile
+    self.handle_exception(source=source_hint)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/home/runner/workspace/templates/doctor/organ_collections.html", line 188, in template
+    {% endif %}
+jinja2.exceptions.TemplateSyntaxError: Encountered unknown tag 'endif'. You probably made a nesting mistake. Jinja is expecting this tag, but currently looking for 'endfor'. The innermost block that needs to be closed is 'for'.
+2025-04-05 10:57:26,510 DEBUG: Doctor blood collections page accessed by: Ramesh, ID: 1 [in /home/runner/workspace/routes/doctor.py:264]
+2025-04-05 10:57:26,571 DEBUG: Found 1 blood collections [in /home/runner/workspace/routes/doctor.py:268]
+2025-04-05 10:57:26,629 DEBUG: Blood Donation ID: 1, Status: approved, OTP: 847030, Verified: False, Donor: Mithraa [in /home/runner/workspace/routes/doctor.py:283]
+2025-04-05 10:57:26,640 ERROR: Exception on /doctor/blood-collections [GET] [in /home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/flask/app.py:875]
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/routes/doctor.py", line 19, in decorated_function
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/routes/doctor.py", line 290, in blood_collections
+    return render_template('doctor/blood_collections.html',
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/flask/templating.py", line 149, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/jinja2/environment.py", line 1087, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/jinja2/environment.py", line 1016, in get_template
+    return self._load_template(name, globals)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/jinja2/environment.py", line 975, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/jinja2/loaders.py", line 138, in load
+    code = environment.compile(source, name, filename)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/jinja2/environment.py", line 771, in compile
+    self.handle_exception(source=source_hint)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/home/runner/workspace/templates/doctor/blood_collections.html", line 187, in template
+    {% endif %}
+jinja2.exceptions.TemplateSyntaxError: Encountered unknown tag 'endif'. You probably made a nesting mistake. Jinja is expecting this tag, but currently looking for 'endfor'. The innermost block that needs to be closed is 'for'.
+2025-04-05 11:05:00,032 DEBUG: Doctor collections page accessed by: Ramesh, ID: 1 [in /home/runner/workspace/routes/doctor.py:127]
+2025-04-05 11:05:00,098 DEBUG: Found 2 assigned collections [in /home/runner/workspace/routes/doctor.py:131]
+2025-04-05 11:05:00,171 DEBUG: Donation ID: 1, Status: collected, OTP: 728270, Verified: True, Donor: Mithraa [in /home/runner/workspace/routes/doctor.py:146]
+2025-04-05 11:05:00,232 DEBUG: Donation ID: 2, Status: approved, OTP: 091385, Verified: False, Donor: suriya [in /home/runner/workspace/routes/doctor.py:146]
+2025-04-05 11:05:18,480 DEBUG: Starting verify_collection for donation_id: 2 [in /home/runner/workspace/routes/doctor.py:161]
+2025-04-05 11:05:18,539 DEBUG: Doctor handling verification: Ramesh, ID: 1 [in /home/runner/workspace/routes/doctor.py:165]
+2025-04-05 11:05:18,599 DEBUG: Found donation: 2, status: approved, OTP: 091385, verified: False [in /home/runner/workspace/routes/doctor.py:169]
+2025-04-05 11:05:18,600 DEBUG: Generating new OTP for donation [in /home/runner/workspace/routes/doctor.py:181]
+2025-04-05 11:05:18,957 INFO: FOR TESTING ONLY - USER: suriya, OTP: 125194 [in /home/runner/workspace/utils.py:136]
+2025-04-05 11:05:18,958 INFO: Attempting to send notification email to: mithraaj23@gmail.com [in /home/runner/workspace/utils.py:29]
+2025-04-05 11:05:19,852 INFO: Successfully sent notification email to: mithraaj23@gmail.com [in /home/runner/workspace/utils.py:43]
+2025-04-05 11:05:19,852 DEBUG: OTP email send result: True [in /home/runner/workspace/routes/doctor.py:189]
+2025-04-05 11:05:49,504 DEBUG: Starting verify_collection for donation_id: 2 [in /home/runner/workspace/routes/doctor.py:161]
+2025-04-05 11:05:49,656 DEBUG: Doctor handling verification: Ramesh, ID: 1 [in /home/runner/workspace/routes/doctor.py:165]
+2025-04-05 11:05:49,743 DEBUG: Found donation: 2, status: approved, OTP: 125194, verified: False [in /home/runner/workspace/routes/doctor.py:169]
+2025-04-05 11:05:49,751 DEBUG: Form validated, OTP entered: 125194 [in /home/runner/workspace/routes/doctor.py:207]
+2025-04-05 11:05:49,752 DEBUG: OTP match successful! [in /home/runner/workspace/routes/doctor.py:210]
+2025-04-05 11:05:50,320 INFO: Attempting to send notification email to: mithraaj23@gmail.com [in /home/runner/workspace/utils.py:29]
+2025-04-05 11:05:51,261 INFO: Successfully sent notification email to: mithraaj23@gmail.com [in /home/runner/workspace/utils.py:43]
+2025-04-05 11:05:51,866 DEBUG: Doctor collections page accessed by: Ramesh, ID: 1 [in /home/runner/workspace/routes/doctor.py:127]
+2025-04-05 11:05:51,926 DEBUG: Found 2 assigned collections [in /home/runner/workspace/routes/doctor.py:131]
+2025-04-05 11:05:51,987 DEBUG: Donation ID: 1, Status: collected, OTP: 728270, Verified: True, Donor: Mithraa [in /home/runner/workspace/routes/doctor.py:146]
+2025-04-05 11:05:52,046 DEBUG: Donation ID: 2, Status: collected, OTP: 125194, Verified: True, Donor: suriya [in /home/runner/workspace/routes/doctor.py:146]
+2025-04-05 11:06:52,542 DEBUG: Starting verify_collection for donation_id: 2 [in /home/runner/workspace/routes/doctor.py:161]
+2025-04-05 11:06:52,606 DEBUG: Doctor handling verification: Ramesh, ID: 1 [in /home/runner/workspace/routes/doctor.py:165]
+2025-04-05 11:06:52,668 DEBUG: Found donation: 2, status: collected, OTP: 125194, verified: True [in /home/runner/workspace/routes/doctor.py:169]
+2025-04-05 11:06:52,669 DEBUG: Redirecting to organ_collections [in /home/runner/workspace/routes/doctor.py:256]
+2025-04-05 11:06:53,257 DEBUG: Doctor collections page accessed by: Ramesh, ID: 1 [in /home/runner/workspace/routes/doctor.py:127]
+2025-04-05 11:06:53,318 DEBUG: Found 2 assigned collections [in /home/runner/workspace/routes/doctor.py:131]
+2025-04-05 11:06:53,378 DEBUG: Donation ID: 1, Status: collected, OTP: 728270, Verified: True, Donor: Mithraa [in /home/runner/workspace/routes/doctor.py:146]
+2025-04-05 11:06:53,437 DEBUG: Donation ID: 2, Status: collected, OTP: 125194, Verified: True, Donor: suriya [in /home/runner/workspace/routes/doctor.py:146]
+2025-04-05 11:07:03,847 DEBUG: Doctor collections page accessed by: Ramesh, ID: 1 [in /home/runner/workspace/routes/doctor.py:127]
+2025-04-05 11:07:03,917 DEBUG: Found 2 assigned collections [in /home/runner/workspace/routes/doctor.py:131]
+2025-04-05 11:07:03,981 DEBUG: Donation ID: 1, Status: collected, OTP: 728270, Verified: True, Donor: Mithraa [in /home/runner/workspace/routes/doctor.py:146]
+2025-04-05 11:07:04,040 DEBUG: Donation ID: 2, Status: collected, OTP: 125194, Verified: True, Donor: suriya [in /home/runner/workspace/routes/doctor.py:146]
+2025-04-05 11:13:56,991 DEBUG: Doctor collections page accessed by: Ramesh, ID: 1 [in /home/runner/workspace/routes/doctor.py:127]
+2025-04-05 11:13:57,050 DEBUG: Found 2 assigned collections [in /home/runner/workspace/routes/doctor.py:131]
+2025-04-05 11:13:57,108 DEBUG: Donation ID: 1, Status: collected, OTP: 728270, Verified: True, Donor: Mithraa [in /home/runner/workspace/routes/doctor.py:146]
+2025-04-05 11:13:57,167 DEBUG: Donation ID: 2, Status: collected, OTP: 125194, Verified: True, Donor: suriya [in /home/runner/workspace/routes/doctor.py:146]
+2025-04-05 11:14:30,676 DEBUG: Doctor blood collections page accessed by: Ramesh, ID: 1 [in /home/runner/workspace/routes/doctor.py:264]
+2025-04-05 11:14:30,734 DEBUG: Found 1 blood collections [in /home/runner/workspace/routes/doctor.py:268]
+2025-04-05 11:14:30,793 DEBUG: Blood Donation ID: 1, Status: approved, OTP: 847030, Verified: False, Donor: Mithraa [in /home/runner/workspace/routes/doctor.py:283]
+2025-04-05 11:14:47,235 DEBUG: Starting verify_blood_collection for donation_id: 1 [in /home/runner/workspace/routes/doctor.py:298]
+2025-04-05 11:14:47,294 DEBUG: Doctor handling verification: Ramesh, ID: 1 [in /home/runner/workspace/routes/doctor.py:302]
+2025-04-05 11:14:47,355 DEBUG: Found blood donation: 1, status: approved, OTP: 847030, verified: False [in /home/runner/workspace/routes/doctor.py:306]
+2025-04-05 11:14:47,355 DEBUG: Generating new OTP for blood donation [in /home/runner/workspace/routes/doctor.py:312]
+2025-04-05 11:14:47,719 INFO: FOR TESTING ONLY - USER: Mithraa, OTP: 736432 [in /home/runner/workspace/utils.py:136]
+2025-04-05 11:14:47,719 INFO: Attempting to send notification email to: mithraa1906@gmail.com [in /home/runner/workspace/utils.py:29]
+2025-04-05 11:14:48,573 INFO: Successfully sent notification email to: mithraa1906@gmail.com [in /home/runner/workspace/utils.py:43]
+2025-04-05 11:14:48,573 DEBUG: OTP email send result: True [in /home/runner/workspace/routes/doctor.py:320]
+2025-04-05 11:15:13,351 DEBUG: Doctor blood collections page accessed by: Ramesh, ID: 1 [in /home/runner/workspace/routes/doctor.py:264]
+2025-04-05 11:15:13,409 DEBUG: Found 1 blood collections [in /home/runner/workspace/routes/doctor.py:268]
+2025-04-05 11:15:13,468 DEBUG: Blood Donation ID: 1, Status: approved, OTP: 736432, Verified: False, Donor: Mithraa [in /home/runner/workspace/routes/doctor.py:283]
+2025-04-05 11:15:22,886 DEBUG: Starting verify_blood_collection for donation_id: 1 [in /home/runner/workspace/routes/doctor.py:298]
+2025-04-05 11:15:22,945 DEBUG: Doctor handling verification: Ramesh, ID: 1 [in /home/runner/workspace/routes/doctor.py:302]
+2025-04-05 11:15:23,004 DEBUG: Found blood donation: 1, status: approved, OTP: 736432, verified: False [in /home/runner/workspace/routes/doctor.py:306]
+2025-04-05 11:15:23,005 DEBUG: Generating new OTP for blood donation [in /home/runner/workspace/routes/doctor.py:312]
+2025-04-05 11:15:23,353 INFO: FOR TESTING ONLY - USER: Mithraa, OTP: 519049 [in /home/runner/workspace/utils.py:136]
+2025-04-05 11:15:23,353 INFO: Attempting to send notification email to: mithraa1906@gmail.com [in /home/runner/workspace/utils.py:29]
+2025-04-05 11:15:24,148 INFO: Successfully sent notification email to: mithraa1906@gmail.com [in /home/runner/workspace/utils.py:43]
+2025-04-05 11:15:24,148 DEBUG: OTP email send result: True [in /home/runner/workspace/routes/doctor.py:320]
+2025-04-05 11:20:13,664 DEBUG: Doctor blood collections page accessed by: Ramesh, ID: 1 [in /home/runner/workspace/routes/doctor.py:263]
+2025-04-05 11:20:13,723 DEBUG: Found 1 blood collections [in /home/runner/workspace/routes/doctor.py:267]
+2025-04-05 11:20:13,782 DEBUG: Blood Donation ID: 1, Status: approved, OTP: 519049, Verified: False, Donor: Mithraa [in /home/runner/workspace/routes/doctor.py:282]
+2025-04-05 11:20:28,307 DEBUG: Starting verify_blood_collection for donation_id: 1 [in /home/runner/workspace/routes/doctor.py:297]
+2025-04-05 11:20:28,370 DEBUG: Doctor handling verification: Ramesh, ID: 1 [in /home/runner/workspace/routes/doctor.py:301]
+2025-04-05 11:20:28,434 DEBUG: Found blood donation: 1, status: approved, OTP: 519049, verified: False [in /home/runner/workspace/routes/doctor.py:305]
+2025-04-05 11:20:28,435 DEBUG: Generating new OTP for blood donation [in /home/runner/workspace/routes/doctor.py:311]
+2025-04-05 11:20:28,807 INFO: FOR TESTING ONLY - USER: Mithraa, OTP: 451470 [in /home/runner/workspace/utils.py:136]
+2025-04-05 11:20:28,808 INFO: Attempting to send notification email to: mithraa1906@gmail.com [in /home/runner/workspace/utils.py:29]
+2025-04-05 11:20:29,761 INFO: Successfully sent notification email to: mithraa1906@gmail.com [in /home/runner/workspace/utils.py:43]
+2025-04-05 11:20:29,761 DEBUG: OTP email send result: True [in /home/runner/workspace/routes/doctor.py:319]
+2025-04-05 11:21:06,324 DEBUG: Starting verify_blood_collection for donation_id: 1 [in /home/runner/workspace/routes/doctor.py:297]
+2025-04-05 11:21:06,383 DEBUG: Doctor handling verification: Ramesh, ID: 1 [in /home/runner/workspace/routes/doctor.py:301]
+2025-04-05 11:21:06,442 DEBUG: Found blood donation: 1, status: approved, OTP: 451470, verified: False [in /home/runner/workspace/routes/doctor.py:305]
+2025-04-05 11:21:06,443 DEBUG: Form validated, OTP entered: 451470 [in /home/runner/workspace/routes/doctor.py:336]
+2025-04-05 11:21:06,443 DEBUG: OTP match successful! [in /home/runner/workspace/routes/doctor.py:339]
+2025-04-05 11:21:06,918 INFO: Attempting to send notification email to: mithraa1906@gmail.com [in /home/runner/workspace/utils.py:29]
+2025-04-05 11:21:07,764 INFO: Successfully sent notification email to: mithraa1906@gmail.com [in /home/runner/workspace/utils.py:43]
+2025-04-05 11:21:08,496 DEBUG: Doctor blood collections page accessed by: Ramesh, ID: 1 [in /home/runner/workspace/routes/doctor.py:263]
+2025-04-05 11:21:08,556 DEBUG: Found 0 blood collections [in /home/runner/workspace/routes/doctor.py:267]
+2025-04-05 11:22:11,774 INFO: Attempting to send notification email to: ram@gmail.com [in /home/runner/workspace/utils.py:29]
+2025-04-05 11:22:12,627 INFO: Successfully sent notification email to: ram@gmail.com [in /home/runner/workspace/utils.py:43]
+2025-04-05 17:09:10,492 INFO: Default admin user created [in D:\OrganLifeline\app.py:101]
+2025-04-05 17:11:47,947 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://localhost:5000 [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:11:47,947 INFO: [33mPress CTRL+C to quit[0m [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:11:47,949 INFO:  * Restarting with stat [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:11:48,545 WARNING:  * Debugger is active! [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:11:48,547 INFO:  * Debugger PIN: 387-533-130 [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:11:54,170 INFO: 127.0.0.1 - - [05/Apr/2025 17:11:54] "GET / HTTP/1.1" 200 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:11:54,256 INFO: 127.0.0.1 - - [05/Apr/2025 17:11:54] "GET /static/css/styles.css HTTP/1.1" 200 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:11:54,383 INFO: 127.0.0.1 - - [05/Apr/2025 17:11:54] "GET /static/js/main.js HTTP/1.1" 200 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:11:54,522 INFO: 127.0.0.1 - - [05/Apr/2025 17:11:54] "GET /static/js/animations.js HTTP/1.1" 200 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:11:54,955 INFO: 127.0.0.1 - - [05/Apr/2025 17:11:54] "[33mGET /favicon.ico HTTP/1.1[0m" 404 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:11:56,336 INFO: 127.0.0.1 - - [05/Apr/2025 17:11:56] "GET /login HTTP/1.1" 200 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:11:56,626 INFO: 127.0.0.1 - - [05/Apr/2025 17:11:56] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:11:56,676 INFO: 127.0.0.1 - - [05/Apr/2025 17:11:56] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:11:56,677 INFO: 127.0.0.1 - - [05/Apr/2025 17:11:56] "[36mGET /static/js/animations.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:12:07,314 INFO: 127.0.0.1 - - [05/Apr/2025 17:12:07] "[32mPOST /login HTTP/1.1[0m" 302 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:12:07,390 DEBUG: Advanced matching algorithm found 0 potential organ matches [in D:\OrganLifeline\utils.py:456]
+2025-04-05 17:12:07,431 INFO: 127.0.0.1 - - [05/Apr/2025 17:12:07] "GET /admin/dashboard HTTP/1.1" 200 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:12:07,456 INFO: 127.0.0.1 - - [05/Apr/2025 17:12:07] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:12:07,774 INFO: 127.0.0.1 - - [05/Apr/2025 17:12:07] "[36mGET /static/js/animations.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:12:07,776 INFO: 127.0.0.1 - - [05/Apr/2025 17:12:07] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:12:52,415 INFO: 127.0.0.1 - - [05/Apr/2025 17:12:52] "GET /admin/hospitals HTTP/1.1" 200 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:12:52,601 INFO: 127.0.0.1 - - [05/Apr/2025 17:12:52] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:12:52,755 INFO: 127.0.0.1 - - [05/Apr/2025 17:12:52] "[36mGET /static/js/animations.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:12:52,756 INFO: 127.0.0.1 - - [05/Apr/2025 17:12:52] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:13:06,602 INFO: 127.0.0.1 - - [05/Apr/2025 17:13:06] "[32mPOST /admin/hospitals/add HTTP/1.1[0m" 302 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:13:06,632 INFO: 127.0.0.1 - - [05/Apr/2025 17:13:06] "GET /admin/hospitals HTTP/1.1" 200 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:13:06,827 INFO: 127.0.0.1 - - [05/Apr/2025 17:13:06] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:13:06,973 INFO: 127.0.0.1 - - [05/Apr/2025 17:13:06] "[36mGET /static/js/animations.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:13:06,974 INFO: 127.0.0.1 - - [05/Apr/2025 17:13:06] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:13:47,331 DEBUG: Advanced matching algorithm found 0 potential organ matches [in D:\OrganLifeline\utils.py:456]
+2025-04-05 17:13:47,335 INFO: 127.0.0.1 - - [05/Apr/2025 17:13:47] "GET /admin/dashboard HTTP/1.1" 200 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:13:47,550 INFO: 127.0.0.1 - - [05/Apr/2025 17:13:47] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:13:47,694 INFO: 127.0.0.1 - - [05/Apr/2025 17:13:47] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:13:47,695 INFO: 127.0.0.1 - - [05/Apr/2025 17:13:47] "[36mGET /static/js/animations.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:13:49,927 INFO: 127.0.0.1 - - [05/Apr/2025 17:13:49] "GET /admin/doctors HTTP/1.1" 200 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:13:50,157 INFO: 127.0.0.1 - - [05/Apr/2025 17:13:50] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:13:50,159 INFO: 127.0.0.1 - - [05/Apr/2025 17:13:50] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:13:50,370 INFO: 127.0.0.1 - - [05/Apr/2025 17:13:50] "[36mGET /static/js/animations.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:13:51,731 INFO: 127.0.0.1 - - [05/Apr/2025 17:13:51] "GET /admin/doctors/add HTTP/1.1" 200 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:13:52,014 INFO: 127.0.0.1 - - [05/Apr/2025 17:13:52] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:13:52,073 INFO: 127.0.0.1 - - [05/Apr/2025 17:13:52] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:13:52,078 INFO: 127.0.0.1 - - [05/Apr/2025 17:13:52] "[36mGET /static/js/animations.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:14:23,705 INFO: 127.0.0.1 - - [05/Apr/2025 17:14:23] "[32mPOST /admin/doctors/add HTTP/1.1[0m" 302 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:14:23,722 INFO: 127.0.0.1 - - [05/Apr/2025 17:14:23] "GET /admin/doctors HTTP/1.1" 200 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:14:23,769 INFO: 127.0.0.1 - - [05/Apr/2025 17:14:23] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:14:24,085 INFO: 127.0.0.1 - - [05/Apr/2025 17:14:24] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:14:24,087 INFO: 127.0.0.1 - - [05/Apr/2025 17:14:24] "[36mGET /static/js/animations.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:14:30,494 DEBUG: Advanced matching algorithm found 0 potential organ matches [in D:\OrganLifeline\utils.py:456]
+2025-04-05 17:14:30,498 INFO: 127.0.0.1 - - [05/Apr/2025 17:14:30] "GET /admin/dashboard HTTP/1.1" 200 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:14:30,542 INFO: 127.0.0.1 - - [05/Apr/2025 17:14:30] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:14:30,739 INFO: 127.0.0.1 - - [05/Apr/2025 17:14:30] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:14:30,849 INFO: 127.0.0.1 - - [05/Apr/2025 17:14:30] "[36mGET /static/js/animations.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:14:34,454 INFO: 127.0.0.1 - - [05/Apr/2025 17:14:34] "[32mGET /logout HTTP/1.1[0m" 302 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:14:34,767 INFO: 127.0.0.1 - - [05/Apr/2025 17:14:34] "GET / HTTP/1.1" 200 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:14:35,132 INFO: 127.0.0.1 - - [05/Apr/2025 17:14:35] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:14:35,134 INFO: 127.0.0.1 - - [05/Apr/2025 17:14:35] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:14:35,136 INFO: 127.0.0.1 - - [05/Apr/2025 17:14:35] "[36mGET /static/js/animations.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:14:36,870 INFO: 127.0.0.1 - - [05/Apr/2025 17:14:36] "GET /register HTTP/1.1" 200 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:14:37,149 INFO: 127.0.0.1 - - [05/Apr/2025 17:14:37] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:14:37,211 INFO: 127.0.0.1 - - [05/Apr/2025 17:14:37] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:14:37,217 INFO: 127.0.0.1 - - [05/Apr/2025 17:14:37] "[36mGET /static/js/animations.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:15:05,080 INFO: FOR TESTING ONLY - USER: Mithraa, OTP: 058394 [in D:\OrganLifeline\utils.py:136]
+2025-04-05 17:15:05,081 INFO: Attempting to send notification email to: mithraa1906@gmail.com [in D:\OrganLifeline\utils.py:29]
+2025-04-05 17:15:09,800 INFO: Successfully sent notification email to: mithraa1906@gmail.com [in D:\OrganLifeline\utils.py:43]
+2025-04-05 17:15:09,803 INFO: 127.0.0.1 - - [05/Apr/2025 17:15:09] "[32mPOST /register HTTP/1.1[0m" 302 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:15:09,839 INFO: 127.0.0.1 - - [05/Apr/2025 17:15:09] "GET /verify HTTP/1.1" 200 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:15:09,888 INFO: 127.0.0.1 - - [05/Apr/2025 17:15:09] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:15:10,197 INFO: 127.0.0.1 - - [05/Apr/2025 17:15:10] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:15:10,201 INFO: 127.0.0.1 - - [05/Apr/2025 17:15:10] "[36mGET /static/js/animations.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:15:36,945 INFO: 127.0.0.1 - - [05/Apr/2025 17:15:36] "[32mPOST /verify HTTP/1.1[0m" 302 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:15:36,952 INFO: 127.0.0.1 - - [05/Apr/2025 17:15:36] "GET /login HTTP/1.1" 200 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:15:37,181 INFO: 127.0.0.1 - - [05/Apr/2025 17:15:37] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:15:37,280 INFO: 127.0.0.1 - - [05/Apr/2025 17:15:37] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:15:37,281 INFO: 127.0.0.1 - - [05/Apr/2025 17:15:37] "[36mGET /static/js/animations.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:18:05,597 INFO: 127.0.0.1 - - [05/Apr/2025 17:18:05] "[32mPOST /login HTTP/1.1[0m" 302 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:18:05,656 INFO: 127.0.0.1 - - [05/Apr/2025 17:18:05] "GET /user/dashboard HTTP/1.1" 200 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:18:05,686 INFO: 127.0.0.1 - - [05/Apr/2025 17:18:05] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:18:06,004 INFO: 127.0.0.1 - - [05/Apr/2025 17:18:06] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:18:06,007 INFO: 127.0.0.1 - - [05/Apr/2025 17:18:06] "[36mGET /static/js/animations.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:18:10,124 INFO: 127.0.0.1 - - [05/Apr/2025 17:18:10] "GET /user/donate-organ HTTP/1.1" 200 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:18:10,344 INFO: 127.0.0.1 - - [05/Apr/2025 17:18:10] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:18:10,358 INFO: 127.0.0.1 - - [05/Apr/2025 17:18:10] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:18:10,454 INFO: 127.0.0.1 - - [05/Apr/2025 17:18:10] "[36mGET /static/js/animations.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:18:20,663 INFO: 127.0.0.1 - - [05/Apr/2025 17:18:20] "[32mPOST /user/donate-organ HTTP/1.1[0m" 302 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:18:20,978 INFO: 127.0.0.1 - - [05/Apr/2025 17:18:20] "GET /user/my-donations HTTP/1.1" 200 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:18:21,346 INFO: 127.0.0.1 - - [05/Apr/2025 17:18:21] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:18:21,347 INFO: 127.0.0.1 - - [05/Apr/2025 17:18:21] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:18:21,348 INFO: 127.0.0.1 - - [05/Apr/2025 17:18:21] "[36mGET /static/js/animations.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:18:25,299 INFO: 127.0.0.1 - - [05/Apr/2025 17:18:25] "GET /user/donate-blood HTTP/1.1" 200 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:18:25,581 INFO: 127.0.0.1 - - [05/Apr/2025 17:18:25] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:18:25,648 INFO: 127.0.0.1 - - [05/Apr/2025 17:18:25] "[36mGET /static/js/animations.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:18:25,648 INFO: 127.0.0.1 - - [05/Apr/2025 17:18:25] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:18:35,373 INFO: 127.0.0.1 - - [05/Apr/2025 17:18:35] "[32mPOST /user/donate-blood HTTP/1.1[0m" 302 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:18:35,398 INFO: 127.0.0.1 - - [05/Apr/2025 17:18:35] "GET /user/my-donations HTTP/1.1" 200 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:18:35,614 INFO: 127.0.0.1 - - [05/Apr/2025 17:18:35] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:18:35,740 INFO: 127.0.0.1 - - [05/Apr/2025 17:18:35] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:18:35,741 INFO: 127.0.0.1 - - [05/Apr/2025 17:18:35] "[36mGET /static/js/animations.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:18:38,934 INFO: 127.0.0.1 - - [05/Apr/2025 17:18:38] "[32mGET /logout HTTP/1.1[0m" 302 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:18:39,222 INFO: 127.0.0.1 - - [05/Apr/2025 17:18:39] "GET / HTTP/1.1" 200 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:18:39,596 INFO: 127.0.0.1 - - [05/Apr/2025 17:18:39] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:18:39,598 INFO: 127.0.0.1 - - [05/Apr/2025 17:18:39] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:18:39,604 INFO: 127.0.0.1 - - [05/Apr/2025 17:18:39] "[36mGET /static/js/animations.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:18:41,684 INFO: 127.0.0.1 - - [05/Apr/2025 17:18:41] "GET /register HTTP/1.1" 200 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:18:41,971 INFO: 127.0.0.1 - - [05/Apr/2025 17:18:41] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:18:42,051 INFO: 127.0.0.1 - - [05/Apr/2025 17:18:42] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:18:42,053 INFO: 127.0.0.1 - - [05/Apr/2025 17:18:42] "[36mGET /static/js/animations.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:19:02,032 INFO: FOR TESTING ONLY - USER: Ram, OTP: 919416 [in D:\OrganLifeline\utils.py:136]
+2025-04-05 17:19:02,033 INFO: Attempting to send notification email to: mithraaj23@gmail.com [in D:\OrganLifeline\utils.py:29]
+2025-04-05 17:19:05,931 INFO: Successfully sent notification email to: mithraaj23@gmail.com [in D:\OrganLifeline\utils.py:43]
+2025-04-05 17:19:05,934 INFO: 127.0.0.1 - - [05/Apr/2025 17:19:05] "[32mPOST /register HTTP/1.1[0m" 302 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:19:05,996 INFO: 127.0.0.1 - - [05/Apr/2025 17:19:05] "GET /verify HTTP/1.1" 200 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:19:06,046 INFO: 127.0.0.1 - - [05/Apr/2025 17:19:06] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:19:06,360 INFO: 127.0.0.1 - - [05/Apr/2025 17:19:06] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:19:06,361 INFO: 127.0.0.1 - - [05/Apr/2025 17:19:06] "[36mGET /static/js/animations.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:19:30,147 INFO: 127.0.0.1 - - [05/Apr/2025 17:19:30] "[32mPOST /verify HTTP/1.1[0m" 302 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:19:30,158 INFO: 127.0.0.1 - - [05/Apr/2025 17:19:30] "GET /login HTTP/1.1" 200 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:19:30,391 INFO: 127.0.0.1 - - [05/Apr/2025 17:19:30] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:19:30,520 INFO: 127.0.0.1 - - [05/Apr/2025 17:19:30] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:19:30,521 INFO: 127.0.0.1 - - [05/Apr/2025 17:19:30] "[36mGET /static/js/animations.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:19:45,768 INFO: 127.0.0.1 - - [05/Apr/2025 17:19:45] "[32mPOST /login HTTP/1.1[0m" 302 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:19:45,781 INFO: 127.0.0.1 - - [05/Apr/2025 17:19:45] "GET /user/dashboard HTTP/1.1" 200 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:19:45,822 INFO: 127.0.0.1 - - [05/Apr/2025 17:19:45] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:19:46,132 INFO: 127.0.0.1 - - [05/Apr/2025 17:19:46] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:19:46,133 INFO: 127.0.0.1 - - [05/Apr/2025 17:19:46] "[36mGET /static/js/animations.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:19:49,032 INFO: 127.0.0.1 - - [05/Apr/2025 17:19:49] "GET /user/request-organ HTTP/1.1" 200 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:19:49,259 INFO: 127.0.0.1 - - [05/Apr/2025 17:19:49] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:19:49,389 INFO: 127.0.0.1 - - [05/Apr/2025 17:19:49] "[36mGET /static/js/animations.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:19:49,390 INFO: 127.0.0.1 - - [05/Apr/2025 17:19:49] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:20:08,147 INFO: 127.0.0.1 - - [05/Apr/2025 17:20:08] "[32mPOST /user/request-organ HTTP/1.1[0m" 302 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:20:08,211 INFO: 127.0.0.1 - - [05/Apr/2025 17:20:08] "GET /user/my-requests HTTP/1.1" 200 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:20:08,390 INFO: 127.0.0.1 - - [05/Apr/2025 17:20:08] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:20:08,554 INFO: 127.0.0.1 - - [05/Apr/2025 17:20:08] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:20:08,554 INFO: 127.0.0.1 - - [05/Apr/2025 17:20:08] "[36mGET /static/js/animations.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:20:09,963 INFO: 127.0.0.1 - - [05/Apr/2025 17:20:09] "GET /user/request-blood HTTP/1.1" 200 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:20:10,190 INFO: 127.0.0.1 - - [05/Apr/2025 17:20:10] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:20:10,191 INFO: 127.0.0.1 - - [05/Apr/2025 17:20:10] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:20:10,314 INFO: 127.0.0.1 - - [05/Apr/2025 17:20:10] "[36mGET /static/js/animations.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:20:18,614 INFO: 127.0.0.1 - - [05/Apr/2025 17:20:18] "[32mPOST /user/request-blood HTTP/1.1[0m" 302 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:20:18,891 INFO: 127.0.0.1 - - [05/Apr/2025 17:20:18] "GET /user/my-requests HTTP/1.1" 200 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:20:19,269 INFO: 127.0.0.1 - - [05/Apr/2025 17:20:19] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:20:19,270 INFO: 127.0.0.1 - - [05/Apr/2025 17:20:19] "[36mGET /static/js/animations.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:20:19,271 INFO: 127.0.0.1 - - [05/Apr/2025 17:20:19] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:20:25,823 INFO: 127.0.0.1 - - [05/Apr/2025 17:20:25] "GET /user/dashboard HTTP/1.1" 200 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:20:26,127 INFO: 127.0.0.1 - - [05/Apr/2025 17:20:26] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:20:26,191 INFO: 127.0.0.1 - - [05/Apr/2025 17:20:26] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:20:26,192 INFO: 127.0.0.1 - - [05/Apr/2025 17:20:26] "[36mGET /static/js/animations.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:20:39,738 INFO: 127.0.0.1 - - [05/Apr/2025 17:20:39] "[32mGET /logout HTTP/1.1[0m" 302 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:20:40,037 INFO: 127.0.0.1 - - [05/Apr/2025 17:20:40] "GET / HTTP/1.1" 200 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:20:40,398 INFO: 127.0.0.1 - - [05/Apr/2025 17:20:40] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:20:40,401 INFO: 127.0.0.1 - - [05/Apr/2025 17:20:40] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:20:40,404 INFO: 127.0.0.1 - - [05/Apr/2025 17:20:40] "[36mGET /static/js/animations.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:20:43,258 INFO: 127.0.0.1 - - [05/Apr/2025 17:20:43] "GET /login HTTP/1.1" 200 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:20:43,563 INFO: 127.0.0.1 - - [05/Apr/2025 17:20:43] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:20:43,623 INFO: 127.0.0.1 - - [05/Apr/2025 17:20:43] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:20:43,625 INFO: 127.0.0.1 - - [05/Apr/2025 17:20:43] "[36mGET /static/js/animations.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:20:52,872 INFO: 127.0.0.1 - - [05/Apr/2025 17:20:52] "[32mPOST /login HTTP/1.1[0m" 302 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:20:52,898 DEBUG: Advanced matching algorithm found 0 potential organ matches [in D:\OrganLifeline\utils.py:456]
+2025-04-05 17:20:52,912 INFO: 127.0.0.1 - - [05/Apr/2025 17:20:52] "GET /admin/dashboard HTTP/1.1" 200 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:20:52,941 INFO: 127.0.0.1 - - [05/Apr/2025 17:20:52] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:20:53,252 INFO: 127.0.0.1 - - [05/Apr/2025 17:20:53] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:20:53,255 INFO: 127.0.0.1 - - [05/Apr/2025 17:20:53] "[36mGET /static/js/animations.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:20:58,885 DEBUG: Advanced matching algorithm found 0 potential organ matches [in D:\OrganLifeline\utils.py:456]
+2025-04-05 17:20:58,894 INFO: 127.0.0.1 - - [05/Apr/2025 17:20:58] "GET /admin/dashboard HTTP/1.1" 200 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:20:58,940 INFO: 127.0.0.1 - - [05/Apr/2025 17:20:58] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:20:59,134 INFO: 127.0.0.1 - - [05/Apr/2025 17:20:59] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:20:59,243 INFO: 127.0.0.1 - - [05/Apr/2025 17:20:59] "[36mGET /static/js/animations.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:21:03,580 INFO: 127.0.0.1 - - [05/Apr/2025 17:21:03] "GET /admin/organ-donations HTTP/1.1" 200 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:21:03,783 INFO: 127.0.0.1 - - [05/Apr/2025 17:21:03] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:21:03,819 INFO: 127.0.0.1 - - [05/Apr/2025 17:21:03] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:21:03,923 INFO: 127.0.0.1 - - [05/Apr/2025 17:21:03] "[36mGET /static/js/animations.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:21:05,985 INFO: 127.0.0.1 - - [05/Apr/2025 17:21:05] "GET /admin/organ-donations/1/assign-doctor HTTP/1.1" 200 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:21:06,256 INFO: 127.0.0.1 - - [05/Apr/2025 17:21:06] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:21:06,314 INFO: 127.0.0.1 - - [05/Apr/2025 17:21:06] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:21:06,316 INFO: 127.0.0.1 - - [05/Apr/2025 17:21:06] "[36mGET /static/js/animations.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:21:13,857 INFO: FOR TESTING ONLY - USER: Mithraa, OTP: 653245 [in D:\OrganLifeline\utils.py:136]
+2025-04-05 17:21:13,857 INFO: Attempting to send notification email to: mithraa1906@gmail.com [in D:\OrganLifeline\utils.py:29]
+2025-04-05 17:21:17,845 INFO: Successfully sent notification email to: mithraa1906@gmail.com [in D:\OrganLifeline\utils.py:43]
+2025-04-05 17:21:17,848 INFO: 127.0.0.1 - - [05/Apr/2025 17:21:17] "[32mPOST /admin/organ-donations/1/assign-doctor HTTP/1.1[0m" 302 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:21:17,882 INFO: 127.0.0.1 - - [05/Apr/2025 17:21:17] "GET /admin/organ-donations HTTP/1.1" 200 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:21:17,933 INFO: 127.0.0.1 - - [05/Apr/2025 17:21:17] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:21:18,251 INFO: 127.0.0.1 - - [05/Apr/2025 17:21:18] "[36mGET /static/js/animations.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:21:18,254 INFO: 127.0.0.1 - - [05/Apr/2025 17:21:18] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:21:27,727 DEBUG: Advanced matching algorithm found 1 potential organ matches [in D:\OrganLifeline\utils.py:456]
+2025-04-05 17:21:27,736 INFO: 127.0.0.1 - - [05/Apr/2025 17:21:27] "GET /admin/dashboard HTTP/1.1" 200 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:21:27,766 INFO: 127.0.0.1 - - [05/Apr/2025 17:21:27] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:21:27,958 INFO: 127.0.0.1 - - [05/Apr/2025 17:21:27] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:21:28,069 INFO: 127.0.0.1 - - [05/Apr/2025 17:21:28] "[36mGET /static/js/animations.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:21:31,478 INFO: 127.0.0.1 - - [05/Apr/2025 17:21:31] "GET /admin/blood-donations HTTP/1.1" 200 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:21:31,688 INFO: 127.0.0.1 - - [05/Apr/2025 17:21:31] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:21:31,698 INFO: 127.0.0.1 - - [05/Apr/2025 17:21:31] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:21:31,831 INFO: 127.0.0.1 - - [05/Apr/2025 17:21:31] "[36mGET /static/js/animations.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:21:35,998 INFO: 127.0.0.1 - - [05/Apr/2025 17:21:35] "[32mPOST /admin/blood-donations HTTP/1.1[0m" 302 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:21:36,287 INFO: 127.0.0.1 - - [05/Apr/2025 17:21:36] "GET /admin/blood-donations HTTP/1.1" 200 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:21:36,647 INFO: 127.0.0.1 - - [05/Apr/2025 17:21:36] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:21:36,648 INFO: 127.0.0.1 - - [05/Apr/2025 17:21:36] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:21:36,649 INFO: 127.0.0.1 - - [05/Apr/2025 17:21:36] "[36mGET /static/js/animations.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:21:42,914 INFO: 127.0.0.1 - - [05/Apr/2025 17:21:42] "GET /admin/blood-donations HTTP/1.1" 200 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:21:50,943 DEBUG: Advanced matching algorithm found 1 potential organ matches [in D:\OrganLifeline\utils.py:456]
+2025-04-05 17:21:50,951 INFO: 127.0.0.1 - - [05/Apr/2025 17:21:50] "GET /admin/dashboard HTTP/1.1" 200 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:21:51,247 INFO: 127.0.0.1 - - [05/Apr/2025 17:21:51] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:21:51,294 INFO: 127.0.0.1 - - [05/Apr/2025 17:21:51] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:21:51,295 INFO: 127.0.0.1 - - [05/Apr/2025 17:21:51] "[36mGET /static/js/animations.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:22:08,291 DEBUG: Advanced matching algorithm found 1 potential organ matches [in D:\OrganLifeline\utils.py:456]
+2025-04-05 17:22:08,295 DEBUG: Found 1 organ matches and 1 blood matches [in D:\OrganLifeline\routes\admin.py:271]
+2025-04-05 17:22:08,374 INFO: 127.0.0.1 - - [05/Apr/2025 17:22:08] "GET /admin/matching HTTP/1.1" 200 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:22:08,522 INFO: 127.0.0.1 - - [05/Apr/2025 17:22:08] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:22:08,535 INFO: 127.0.0.1 - - [05/Apr/2025 17:22:08] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:22:08,710 INFO: 127.0.0.1 - - [05/Apr/2025 17:22:08] "[36mGET /static/js/animations.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:22:53,174 INFO: 127.0.0.1 - - [05/Apr/2025 17:22:53] "[32mPOST /admin/match-organ/1/1 HTTP/1.1[0m" 302 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:22:53,411 DEBUG: Advanced matching algorithm found 0 potential organ matches [in D:\OrganLifeline\utils.py:456]
+2025-04-05 17:22:53,417 DEBUG: Found 0 organ matches and 1 blood matches [in D:\OrganLifeline\routes\admin.py:271]
+2025-04-05 17:22:53,428 INFO: 127.0.0.1 - - [05/Apr/2025 17:22:53] "GET /admin/matching HTTP/1.1" 200 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:22:53,785 INFO: 127.0.0.1 - - [05/Apr/2025 17:22:53] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:22:53,789 INFO: 127.0.0.1 - - [05/Apr/2025 17:22:53] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:22:53,824 INFO: 127.0.0.1 - - [05/Apr/2025 17:22:53] "[36mGET /static/js/animations.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:22:57,789 INFO: 127.0.0.1 - - [05/Apr/2025 17:22:57] "[32mPOST /admin/match-blood/1/1 HTTP/1.1[0m" 302 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:22:58,085 DEBUG: Advanced matching algorithm found 0 potential organ matches [in D:\OrganLifeline\utils.py:456]
+2025-04-05 17:22:58,087 DEBUG: Found 0 organ matches and 0 blood matches [in D:\OrganLifeline\routes\admin.py:271]
+2025-04-05 17:22:58,089 INFO: 127.0.0.1 - - [05/Apr/2025 17:22:58] "GET /admin/matching HTTP/1.1" 200 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:22:58,445 INFO: 127.0.0.1 - - [05/Apr/2025 17:22:58] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:22:58,447 INFO: 127.0.0.1 - - [05/Apr/2025 17:22:58] "[36mGET /static/js/animations.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:22:58,448 INFO: 127.0.0.1 - - [05/Apr/2025 17:22:58] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:23:01,653 DEBUG: Advanced matching algorithm found 0 potential organ matches [in D:\OrganLifeline\utils.py:456]
+2025-04-05 17:23:01,662 DEBUG: Found 0 organ matches and 0 blood matches [in D:\OrganLifeline\routes\admin.py:271]
+2025-04-05 17:23:01,664 INFO: 127.0.0.1 - - [05/Apr/2025 17:23:01] "GET /admin/matching HTTP/1.1" 200 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:23:28,111 INFO: 127.0.0.1 - - [05/Apr/2025 17:23:28] "[32mGET /logout HTTP/1.1[0m" 302 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:23:28,411 INFO: 127.0.0.1 - - [05/Apr/2025 17:23:28] "GET / HTTP/1.1" 200 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:23:28,768 INFO: 127.0.0.1 - - [05/Apr/2025 17:23:28] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:23:28,770 INFO: 127.0.0.1 - - [05/Apr/2025 17:23:28] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:23:28,773 INFO: 127.0.0.1 - - [05/Apr/2025 17:23:28] "[36mGET /static/js/animations.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:23:30,593 INFO: 127.0.0.1 - - [05/Apr/2025 17:23:30] "GET /login HTTP/1.1" 200 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:23:30,904 INFO: 127.0.0.1 - - [05/Apr/2025 17:23:30] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:23:30,966 INFO: 127.0.0.1 - - [05/Apr/2025 17:23:30] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:23:30,970 INFO: 127.0.0.1 - - [05/Apr/2025 17:23:30] "[36mGET /static/js/animations.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:23:49,112 INFO: 127.0.0.1 - - [05/Apr/2025 17:23:49] "[32mPOST /login HTTP/1.1[0m" 302 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:23:49,179 INFO: 127.0.0.1 - - [05/Apr/2025 17:23:49] "GET /doctor/dashboard HTTP/1.1" 200 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:23:49,202 INFO: 127.0.0.1 - - [05/Apr/2025 17:23:49] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:23:49,516 INFO: 127.0.0.1 - - [05/Apr/2025 17:23:49] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:23:49,517 INFO: 127.0.0.1 - - [05/Apr/2025 17:23:49] "[36mGET /static/js/animations.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:24:03,925 INFO: 127.0.0.1 - - [05/Apr/2025 17:24:03] "GET /doctor/organ-requests HTTP/1.1" 200 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:24:04,115 INFO: 127.0.0.1 - - [05/Apr/2025 17:24:04] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:24:04,123 INFO: 127.0.0.1 - - [05/Apr/2025 17:24:04] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:24:04,268 INFO: 127.0.0.1 - - [05/Apr/2025 17:24:04] "[36mGET /static/js/animations.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:24:08,911 DEBUG: Doctor blood collections page accessed by: Ramesh, ID: 1 [in D:\OrganLifeline\routes\doctor.py:263]
+2025-04-05 17:24:08,913 DEBUG: Found 1 blood collections [in D:\OrganLifeline\routes\doctor.py:267]
+2025-04-05 17:24:08,933 INFO: FOR TESTING ONLY - USER: Mithraa, OTP: 830882 [in D:\OrganLifeline\utils.py:136]
+2025-04-05 17:24:08,933 INFO: Attempting to send notification email to: mithraa1906@gmail.com [in D:\OrganLifeline\utils.py:29]
+2025-04-05 17:24:12,924 INFO: Successfully sent notification email to: mithraa1906@gmail.com [in D:\OrganLifeline\utils.py:43]
+2025-04-05 17:24:12,925 DEBUG: Blood Donation ID: 1, Status: approved, OTP: 830882, Verified: False, Donor: Mithraa [in D:\OrganLifeline\routes\doctor.py:282]
+2025-04-05 17:24:12,977 INFO: 127.0.0.1 - - [05/Apr/2025 17:24:12] "GET /doctor/blood-collections HTTP/1.1" 200 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:24:13,008 INFO: 127.0.0.1 - - [05/Apr/2025 17:24:13] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:24:13,338 INFO: 127.0.0.1 - - [05/Apr/2025 17:24:13] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:24:13,340 INFO: 127.0.0.1 - - [05/Apr/2025 17:24:13] "[36mGET /static/js/animations.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:24:18,023 DEBUG: Starting verify_blood_collection for donation_id: 1 [in D:\OrganLifeline\routes\doctor.py:297]
+2025-04-05 17:24:18,025 DEBUG: Doctor handling verification: Ramesh, ID: 1 [in D:\OrganLifeline\routes\doctor.py:301]
+2025-04-05 17:24:18,027 DEBUG: Found blood donation: 1, status: approved, OTP: 830882, verified: False [in D:\OrganLifeline\routes\doctor.py:305]
+2025-04-05 17:24:18,031 DEBUG: Generating new OTP for blood donation [in D:\OrganLifeline\routes\doctor.py:311]
+2025-04-05 17:24:18,061 INFO: FOR TESTING ONLY - USER: Mithraa, OTP: 813261 [in D:\OrganLifeline\utils.py:136]
+2025-04-05 17:24:18,066 INFO: Attempting to send notification email to: mithraa1906@gmail.com [in D:\OrganLifeline\utils.py:29]
+2025-04-05 17:24:22,655 INFO: Successfully sent notification email to: mithraa1906@gmail.com [in D:\OrganLifeline\utils.py:43]
+2025-04-05 17:24:22,655 DEBUG: OTP email send result: True [in D:\OrganLifeline\routes\doctor.py:319]
+2025-04-05 17:24:22,675 INFO: 127.0.0.1 - - [05/Apr/2025 17:24:22] "GET /doctor/blood-collections/1/verify HTTP/1.1" 200 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:24:22,732 INFO: 127.0.0.1 - - [05/Apr/2025 17:24:22] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:24:23,048 INFO: 127.0.0.1 - - [05/Apr/2025 17:24:23] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:24:23,049 INFO: 127.0.0.1 - - [05/Apr/2025 17:24:23] "[36mGET /static/js/animations.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:24:45,725 DEBUG: Starting verify_blood_collection for donation_id: 1 [in D:\OrganLifeline\routes\doctor.py:297]
+2025-04-05 17:24:45,729 DEBUG: Doctor handling verification: Ramesh, ID: 1 [in D:\OrganLifeline\routes\doctor.py:301]
+2025-04-05 17:24:45,731 DEBUG: Found blood donation: 1, status: approved, OTP: 813261, verified: False [in D:\OrganLifeline\routes\doctor.py:305]
+2025-04-05 17:24:45,732 DEBUG: Form validated, OTP entered: 830882 [in D:\OrganLifeline\routes\doctor.py:336]
+2025-04-05 17:24:45,734 DEBUG: OTP mismatch: Expected 813261, got 830882 [in D:\OrganLifeline\routes\doctor.py:360]
+2025-04-05 17:24:45,740 INFO: 127.0.0.1 - - [05/Apr/2025 17:24:45] "POST /doctor/blood-collections/1/verify HTTP/1.1" 200 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:24:45,801 INFO: 127.0.0.1 - - [05/Apr/2025 17:24:45] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:24:45,987 INFO: 127.0.0.1 - - [05/Apr/2025 17:24:45] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:24:46,112 INFO: 127.0.0.1 - - [05/Apr/2025 17:24:46] "[36mGET /static/js/animations.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:25:02,659 DEBUG: Starting verify_blood_collection for donation_id: 1 [in D:\OrganLifeline\routes\doctor.py:297]
+2025-04-05 17:25:02,661 DEBUG: Doctor handling verification: Ramesh, ID: 1 [in D:\OrganLifeline\routes\doctor.py:301]
+2025-04-05 17:25:02,664 DEBUG: Found blood donation: 1, status: approved, OTP: 813261, verified: False [in D:\OrganLifeline\routes\doctor.py:305]
+2025-04-05 17:25:02,665 DEBUG: Form validated, OTP entered: 813261 [in D:\OrganLifeline\routes\doctor.py:336]
+2025-04-05 17:25:02,666 DEBUG: OTP match successful! [in D:\OrganLifeline\routes\doctor.py:339]
+2025-04-05 17:25:02,694 INFO: Attempting to send notification email to: mithraa1906@gmail.com [in D:\OrganLifeline\utils.py:29]
+2025-04-05 17:25:06,684 INFO: Successfully sent notification email to: mithraa1906@gmail.com [in D:\OrganLifeline\utils.py:43]
+2025-04-05 17:25:06,686 INFO: 127.0.0.1 - - [05/Apr/2025 17:25:06] "[32mPOST /doctor/blood-collections/1/verify HTTP/1.1[0m" 302 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:25:06,699 DEBUG: Doctor blood collections page accessed by: Ramesh, ID: 1 [in D:\OrganLifeline\routes\doctor.py:263]
+2025-04-05 17:25:06,704 DEBUG: Found 0 blood collections [in D:\OrganLifeline\routes\doctor.py:267]
+2025-04-05 17:25:06,714 INFO: 127.0.0.1 - - [05/Apr/2025 17:25:06] "GET /doctor/blood-collections HTTP/1.1" 200 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:25:06,752 INFO: 127.0.0.1 - - [05/Apr/2025 17:25:06] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:25:07,062 INFO: 127.0.0.1 - - [05/Apr/2025 17:25:07] "[36mGET /static/js/animations.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:25:07,067 INFO: 127.0.0.1 - - [05/Apr/2025 17:25:07] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:25:18,608 INFO: 127.0.0.1 - - [05/Apr/2025 17:25:18] "GET /doctor/dashboard HTTP/1.1" 200 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:25:18,897 INFO: 127.0.0.1 - - [05/Apr/2025 17:25:18] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:25:18,948 INFO: 127.0.0.1 - - [05/Apr/2025 17:25:18] "[36mGET /static/js/animations.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:25:18,957 INFO: 127.0.0.1 - - [05/Apr/2025 17:25:18] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:25:21,824 DEBUG: Doctor collections page accessed by: Ramesh, ID: 1 [in D:\OrganLifeline\routes\doctor.py:127]
+2025-04-05 17:25:21,826 DEBUG: Found 1 assigned collections [in D:\OrganLifeline\routes\doctor.py:131]
+2025-04-05 17:25:21,830 DEBUG: Donation ID: 1, Status: approved, OTP: 653245, Verified: False, Donor: Mithraa [in D:\OrganLifeline\routes\doctor.py:146]
+2025-04-05 17:25:21,891 INFO: 127.0.0.1 - - [05/Apr/2025 17:25:21] "GET /doctor/organ-collections HTTP/1.1" 200 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:25:22,070 INFO: 127.0.0.1 - - [05/Apr/2025 17:25:22] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:25:22,112 INFO: 127.0.0.1 - - [05/Apr/2025 17:25:22] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:25:22,239 INFO: 127.0.0.1 - - [05/Apr/2025 17:25:22] "[36mGET /static/js/animations.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:25:24,845 DEBUG: Starting verify_collection for donation_id: 1 [in D:\OrganLifeline\routes\doctor.py:161]
+2025-04-05 17:25:24,846 DEBUG: Doctor handling verification: Ramesh, ID: 1 [in D:\OrganLifeline\routes\doctor.py:165]
+2025-04-05 17:25:24,848 DEBUG: Found donation: 1, status: approved, OTP: 653245, verified: False [in D:\OrganLifeline\routes\doctor.py:169]
+2025-04-05 17:25:24,850 DEBUG: Generating new OTP for donation [in D:\OrganLifeline\routes\doctor.py:181]
+2025-04-05 17:25:24,861 INFO: FOR TESTING ONLY - USER: Mithraa, OTP: 742996 [in D:\OrganLifeline\utils.py:136]
+2025-04-05 17:25:24,862 INFO: Attempting to send notification email to: mithraa1906@gmail.com [in D:\OrganLifeline\utils.py:29]
+2025-04-05 17:25:28,805 INFO: Successfully sent notification email to: mithraa1906@gmail.com [in D:\OrganLifeline\utils.py:43]
+2025-04-05 17:25:28,807 DEBUG: OTP email send result: True [in D:\OrganLifeline\routes\doctor.py:189]
+2025-04-05 17:25:28,832 INFO: 127.0.0.1 - - [05/Apr/2025 17:25:28] "GET /doctor/organ-collections/1/verify HTTP/1.1" 200 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:25:28,882 INFO: 127.0.0.1 - - [05/Apr/2025 17:25:28] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:25:29,199 INFO: 127.0.0.1 - - [05/Apr/2025 17:25:29] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:25:29,200 INFO: 127.0.0.1 - - [05/Apr/2025 17:25:29] "[36mGET /static/js/animations.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:25:49,503 DEBUG: Starting verify_collection for donation_id: 1 [in D:\OrganLifeline\routes\doctor.py:161]
+2025-04-05 17:25:49,506 DEBUG: Doctor handling verification: Ramesh, ID: 1 [in D:\OrganLifeline\routes\doctor.py:165]
+2025-04-05 17:25:49,510 DEBUG: Found donation: 1, status: approved, OTP: 742996, verified: False [in D:\OrganLifeline\routes\doctor.py:169]
+2025-04-05 17:25:49,512 DEBUG: Form validated, OTP entered: 742996 [in D:\OrganLifeline\routes\doctor.py:206]
+2025-04-05 17:25:49,513 DEBUG: OTP match successful! [in D:\OrganLifeline\routes\doctor.py:209]
+2025-04-05 17:25:49,529 INFO: Attempting to send notification email to: mithraa1906@gmail.com [in D:\OrganLifeline\utils.py:29]
+2025-04-05 17:25:53,080 INFO: Successfully sent notification email to: mithraa1906@gmail.com [in D:\OrganLifeline\utils.py:43]
+2025-04-05 17:25:53,082 INFO: 127.0.0.1 - - [05/Apr/2025 17:25:53] "[32mPOST /doctor/organ-collections/1/verify HTTP/1.1[0m" 302 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:25:53,107 DEBUG: Doctor collections page accessed by: Ramesh, ID: 1 [in D:\OrganLifeline\routes\doctor.py:127]
+2025-04-05 17:25:53,109 DEBUG: Found 1 assigned collections [in D:\OrganLifeline\routes\doctor.py:131]
+2025-04-05 17:25:53,121 DEBUG: Donation ID: 1, Status: collected, OTP: 742996, Verified: True, Donor: Mithraa [in D:\OrganLifeline\routes\doctor.py:146]
+2025-04-05 17:25:53,125 INFO: 127.0.0.1 - - [05/Apr/2025 17:25:53] "GET /doctor/organ-collections HTTP/1.1" 200 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:25:53,174 INFO: 127.0.0.1 - - [05/Apr/2025 17:25:53] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:25:53,495 INFO: 127.0.0.1 - - [05/Apr/2025 17:25:53] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:25:53,498 INFO: 127.0.0.1 - - [05/Apr/2025 17:25:53] "[36mGET /static/js/animations.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:26:03,214 INFO: 127.0.0.1 - - [05/Apr/2025 17:26:03] "GET /doctor/dashboard HTTP/1.1" 200 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:26:03,515 INFO: 127.0.0.1 - - [05/Apr/2025 17:26:03] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:26:03,562 INFO: 127.0.0.1 - - [05/Apr/2025 17:26:03] "[36mGET /static/js/animations.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:26:03,562 INFO: 127.0.0.1 - - [05/Apr/2025 17:26:03] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:27:11,701 INFO: 127.0.0.1 - - [05/Apr/2025 17:27:11] "[32mGET /logout HTTP/1.1[0m" 302 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:27:12,006 INFO: 127.0.0.1 - - [05/Apr/2025 17:27:12] "GET / HTTP/1.1" 200 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:27:12,366 INFO: 127.0.0.1 - - [05/Apr/2025 17:27:12] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:27:12,367 INFO: 127.0.0.1 - - [05/Apr/2025 17:27:12] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:27:12,368 INFO: 127.0.0.1 - - [05/Apr/2025 17:27:12] "[36mGET /static/js/animations.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:27:13,856 INFO: 127.0.0.1 - - [05/Apr/2025 17:27:13] "GET /login HTTP/1.1" 200 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:27:14,214 INFO: 127.0.0.1 - - [05/Apr/2025 17:27:14] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:27:14,217 INFO: 127.0.0.1 - - [05/Apr/2025 17:27:14] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:27:14,218 INFO: 127.0.0.1 - - [05/Apr/2025 17:27:14] "[36mGET /static/js/animations.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:27:23,061 INFO: 127.0.0.1 - - [05/Apr/2025 17:27:23] "[32mPOST /login HTTP/1.1[0m" 302 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:27:23,125 DEBUG: Advanced matching algorithm found 0 potential organ matches [in D:\OrganLifeline\utils.py:456]
+2025-04-05 17:27:23,132 INFO: 127.0.0.1 - - [05/Apr/2025 17:27:23] "GET /admin/dashboard HTTP/1.1" 200 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:27:23,497 INFO: 127.0.0.1 - - [05/Apr/2025 17:27:23] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:27:23,498 INFO: 127.0.0.1 - - [05/Apr/2025 17:27:23] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:27:23,500 INFO: 127.0.0.1 - - [05/Apr/2025 17:27:23] "[36mGET /static/js/animations.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:27:41,923 INFO: 127.0.0.1 - - [05/Apr/2025 17:27:41] "GET /admin/organ-donations HTTP/1.1" 200 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:27:42,222 INFO: 127.0.0.1 - - [05/Apr/2025 17:27:42] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:27:42,272 INFO: 127.0.0.1 - - [05/Apr/2025 17:27:42] "[36mGET /static/js/animations.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]
+2025-04-05 17:27:42,273 INFO: 127.0.0.1 - - [05/Apr/2025 17:27:42] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 - [in D:\OrganLifeline\venv\Lib\site-packages\werkzeug\_internal.py:97]

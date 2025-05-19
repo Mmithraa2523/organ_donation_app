@@ -1,0 +1,45 @@
+<!-- OTP Verification Modal -->
+<div class="modal fade" id="verifyOtpModal{{ donation.id }}" tabindex="-1" aria-labelledby="verifyOtpModalLabel{{ donation.id }}" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-dark">
+            <div class="modal-header bg-success text-white">
+                <h5 class="modal-title" id="verifyOtpModalLabel{{ donation.id }}">
+                    Verify Organ Collection
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-info mb-4">
+                    <h5 class="alert-heading">Donation Information</h5>
+                    <p class="mb-0"><strong>Donor:</strong> {{ donation.donor.username }}</p>
+                    <p class="mb-0"><strong>Organ Type:</strong> {{ donation.organ_type|capitalize }}</p>
+                    <p class="mb-0"><strong>Blood Group:</strong> {{ donation.blood_group }}</p>
+                </div>
+                
+                <div class="text-center mb-4">
+                    <i class="fas fa-mobile-alt fa-5x text-success mb-3"></i>
+                    <h4>OTP Verification</h4>
+                    <p>Please ask the donor for the OTP sent to their email/phone to verify this collection.</p>
+                </div>
+                
+                <form method="POST" action="{{ url_for('doctor.verify_collection', donation_id=donation.id) }}" id="verifyForm{{ donation.id }}">
+                    {{ form.hidden_tag() }}
+                    
+                    <div class="mb-4">
+                        <label for="otp" class="form-label">{{ form.otp.label }}</label>
+                        {{ form.otp(class="form-control form-control-lg text-center", placeholder="Enter 6-digit OTP") }}
+                        {% if form.otp.errors %}
+                            {% for error in form.otp.errors %}
+                                <div class="text-danger">{{ error }}</div>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                    
+                    <div class="d-grid mb-3">
+                        {{ form.submit(class="btn btn-success btn-lg") }}
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

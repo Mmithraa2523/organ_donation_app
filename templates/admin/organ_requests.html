@@ -1,0 +1,186 @@
+{% extends 'layout.html' %}
+
+{% block title %}Organ Requests - Organ & Blood Donation System{% endblock %}
+
+{% block content %}
+<section class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h1 class="mb-0"><i class="fas fa-hand-holding-heart me-2"></i>Organ Requests</h1>
+            <p class="lead">Manage all organ requests in the system</p>
+        </div>
+    </div>
+
+    <div class="card bg-dark animate-on-scroll" data-animation="fade-in">
+        <div class="card-body">
+            <ul class="nav nav-tabs mb-3" id="requestsTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="all-requests-tab" data-bs-toggle="tab" data-bs-target="#all-requests" type="button" role="tab" aria-controls="all-requests" aria-selected="true">All Requests</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="pending-requests-tab" data-bs-toggle="tab" data-bs-target="#pending-requests" type="button" role="tab" aria-controls="pending-requests" aria-selected="false">Pending</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="approved-requests-tab" data-bs-toggle="tab" data-bs-target="#approved-requests" type="button" role="tab" aria-controls="approved-requests" aria-selected="false">Approved</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="fulfilled-requests-tab" data-bs-toggle="tab" data-bs-target="#fulfilled-requests" type="button" role="tab" aria-controls="fulfilled-requests" aria-selected="false">Fulfilled</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="unavailable-requests-tab" data-bs-toggle="tab" data-bs-target="#unavailable-requests" type="button" role="tab" aria-controls="unavailable-requests" aria-selected="false">Unavailable</button>
+                </li>
+            </ul>
+            
+            <div class="tab-content" id="requestsTabContent">
+                <div class="tab-pane fade show active" id="all-requests" role="tabpanel" aria-labelledby="all-requests-tab">
+                    {% if requests %}
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Requester</th>
+                                        <th>Organ Type</th>
+                                        <th>Blood Group</th>
+                                        <th>Urgency</th>
+                                        <th>Status</th>
+                                        <th>Date</th>
+                                        <th>Doctor</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for request in requests %}
+                                    <tr>
+                                        <td>{{ request.id }}</td>
+                                        <td>{{ request.requester.username }}</td>
+                                        <td>{{ request.organ_type|capitalize }}</td>
+                                        <td>{{ request.blood_group }}</td>
+                                        <td>
+                                            <span class="badge {% if request.urgency_level == 'critical' %}bg-danger{% elif request.urgency_level == 'urgent' %}bg-warning{% else %}bg-info{% endif %}">
+                                                {{ request.urgency_level|capitalize }}
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span class="badge {% if request.status == 'pending' %}bg-warning{% elif request.status == 'approved' %}bg-info{% elif request.status == 'fulfilled' %}bg-success{% else %}bg-danger{% endif %}">
+                                                {{ request.status|capitalize }}
+                                            </span>
+                                        </td>
+                                        <td>{{ request.date_requested.strftime('%Y-%m-%d') }}</td>
+                                        <td>
+                                            {% if request.assigned_doctor %}
+                                                Dr. {{ request.assigned_doctor.user.username }}
+                                            {% else %}
+                                                <span class="text-warning">Not Assigned</span>
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            <div class="btn-group btn-group-sm">
+                                                <button type="button" class="btn btn-info" data-bs-toggle="tooltip" title="View Details">
+                                                    <i class="fas fa-eye"></i>
+                                                </button>
+                                                {% if not request.assigned_doctor and request.status == 'pending' %}
+                                                    <a href="{{ url_for('admin.assign_doctor_to_request', request_id=request.id) }}" class="btn btn-primary" data-bs-toggle="tooltip" title="Assign Doctor">
+                                                        <i class="fas fa-user-md"></i>
+                                                    </a>
+                                                {% endif %}
+                                                {% if request.status == 'pending' %}
+                                                    <a href="{{ url_for('admin.matching') }}" class="btn btn-success" data-bs-toggle="tooltip" title="Find Match">
+                                                        <i class="fas fa-handshake"></i>
+                                                    </a>
+                                                {% endif %}
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    {% else %}
+                        <div class="text-center py-5">
+                            <i class="fas fa-hand-holding-heart fa-4x text-secondary mb-3"></i>
+                            <h4>No organ requests found</h4>
+                            <p>There are no organ requests in the system yet</p>
+                        </div>
+                    {% endif %}
+                </div>
+                
+                <!-- Other tabs for filtered views would go here -->
+                <div class="tab-pane fade" id="pending-requests" role="tabpanel" aria-labelledby="pending-requests-tab">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Requester</th>
+                                    <th>Organ Type</th>
+                                    <th>Blood Group</th>
+                                    <th>Urgency</th>
+                                    <th>Date</th>
+                                    <th>Doctor</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for request in requests if request.status == 'pending' %}
+                                <tr>
+                                    <td>{{ request.id }}</td>
+                                    <td>{{ request.requester.username }}</td>
+                                    <td>{{ request.organ_type|capitalize }}</td>
+                                    <td>{{ request.blood_group }}</td>
+                                    <td>
+                                        <span class="badge {% if request.urgency_level == 'critical' %}bg-danger{% elif request.urgency_level == 'urgent' %}bg-warning{% else %}bg-info{% endif %}">
+                                            {{ request.urgency_level|capitalize }}
+                                        </span>
+                                    </td>
+                                    <td>{{ request.date_requested.strftime('%Y-%m-%d') }}</td>
+                                    <td>
+                                        {% if request.assigned_doctor %}
+                                            Dr. {{ request.assigned_doctor.user.username }}
+                                        {% else %}
+                                            <span class="text-warning">Not Assigned</span>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        <div class="btn-group btn-group-sm">
+                                            <button type="button" class="btn btn-info" data-bs-toggle="tooltip" title="View Details">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            {% if not request.assigned_doctor %}
+                                                <a href="{{ url_for('admin.assign_doctor_to_request', request_id=request.id) }}" class="btn btn-primary" data-bs-toggle="tooltip" title="Assign Doctor">
+                                                    <i class="fas fa-user-md"></i>
+                                                </a>
+                                            {% endif %}
+                                            <a href="{{ url_for('admin.matching') }}" class="btn btn-success" data-bs-toggle="tooltip" title="Find Match">
+                                                <i class="fas fa-handshake"></i>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% else %}
+                                <tr>
+                                    <td colspan="8" class="text-center">No pending requests found</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <!-- Similar tables for approved, fulfilled, and unavailable tabs -->
+                <div class="tab-pane fade" id="approved-requests" role="tabpanel" aria-labelledby="approved-requests-tab">
+                    <!-- Table for approved requests -->
+                </div>
+                
+                <div class="tab-pane fade" id="fulfilled-requests" role="tabpanel" aria-labelledby="fulfilled-requests-tab">
+                    <!-- Table for fulfilled requests -->
+                </div>
+                
+                <div class="tab-pane fade" id="unavailable-requests" role="tabpanel" aria-labelledby="unavailable-requests-tab">
+                    <!-- Table for unavailable requests -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,238 @@
+{% extends 'layout.html' %}
+
+{% block title %}Manage Hospitals - Organ & Blood Donation System{% endblock %}
+
+{% block content %}
+<section class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h1 class="mb-0"><i class="fas fa-hospital me-2"></i>Manage Hospitals</h1>
+            <p class="lead">View and manage all hospitals in the system</p>
+        </div>
+        {% if not add_mode %}
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addHospitalModal">
+            <i class="fas fa-plus me-1"></i> Add New Hospital
+        </button>
+        {% endif %}
+    </div>
+
+    {% if add_mode %}
+    <div class="row mb-4">
+        <div class="col-md-8 offset-md-2">
+            <div class="card bg-dark animate-on-scroll" data-animation="fade-in">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="mb-0"><i class="fas fa-hospital me-2"></i>Add New Hospital</h3>
+                </div>
+                <div class="card-body">
+                    <form method="POST" action="{{ url_for('admin.add_hospital') }}" class="needs-validation" novalidate>
+                        {{ form.hidden_tag() }}
+                        
+                        <div class="mb-3">
+                            <label for="name" class="form-label">{{ form.name.label }}</label>
+                            {{ form.name(class="form-control", placeholder="Enter hospital name") }}
+                            {% if form.name.errors %}
+                                {% for error in form.name.errors %}
+                                    <div class="text-danger">{{ error }}</div>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="address" class="form-label">{{ form.address.label }}</label>
+                            {{ form.address(class="form-control", placeholder="Enter hospital address") }}
+                            {% if form.address.errors %}
+                                {% for error in form.address.errors %}
+                                    <div class="text-danger">{{ error }}</div>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                        
+                        <div class="row mb-3">
+                            <div class="col-md-4 mb-3 mb-md-0">
+                                <label for="city" class="form-label">{{ form.city.label }}</label>
+                                {{ form.city(class="form-control", placeholder="Enter city") }}
+                                {% if form.city.errors %}
+                                    {% for error in form.city.errors %}
+                                        <div class="text-danger">{{ error }}</div>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                            <div class="col-md-4 mb-3 mb-md-0">
+                                <label for="state" class="form-label">{{ form.state.label }}</label>
+                                {{ form.state(class="form-control", placeholder="Enter state") }}
+                                {% if form.state.errors %}
+                                    {% for error in form.state.errors %}
+                                        <div class="text-danger">{{ error }}</div>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                            <div class="col-md-4">
+                                <label for="country" class="form-label">{{ form.country.label }}</label>
+                                {{ form.country(class="form-control", placeholder="Enter country") }}
+                                {% if form.country.errors %}
+                                    {% for error in form.country.errors %}
+                                        <div class="text-danger">{{ error }}</div>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="phone" class="form-label">{{ form.phone.label }}</label>
+                            {{ form.phone(class="form-control", placeholder="Enter hospital phone number") }}
+                            {% if form.phone.errors %}
+                                {% for error in form.phone.errors %}
+                                    <div class="text-danger">{{ error }}</div>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                        
+                        <div class="d-flex justify-content-between mt-4">
+                            <a href="{{ url_for('admin.hospitals') }}" class="btn btn-secondary">
+                                <i class="fas fa-arrow-left me-1"></i> Back to Hospitals
+                            </a>
+                            {{ form.submit(class="btn btn-primary") }}
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div class="card bg-dark animate-on-scroll" data-animation="fade-in">
+        <div class="card-body">
+            {% if hospitals %}
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Address</th>
+                                <th>City</th>
+                                <th>State</th>
+                                <th>Country</th>
+                                <th>Phone</th>
+                                <th>Doctors</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for hospital in hospitals %}
+                            <tr>
+                                <td>{{ hospital.id }}</td>
+                                <td>{{ hospital.name }}</td>
+                                <td>{{ hospital.address }}</td>
+                                <td>{{ hospital.city }}</td>
+                                <td>{{ hospital.state }}</td>
+                                <td>{{ hospital.country }}</td>
+                                <td>{{ hospital.phone }}</td>
+                                <td>{{ hospital.doctors|length }}</td>
+                                <td>
+                                    <div class="btn-group btn-group-sm">
+                                        <button type="button" class="btn btn-info" data-bs-toggle="tooltip" title="View Details">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-warning" data-bs-toggle="tooltip" title="Edit">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% else %}
+                <div class="text-center py-5">
+                    <i class="fas fa-hospital fa-4x text-secondary mb-3"></i>
+                    <h4>No hospitals found</h4>
+                    <p>Click the button above to add your first hospital</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Add Hospital Modal -->
+    <div class="modal fade" id="addHospitalModal" tabindex="-1" aria-labelledby="addHospitalModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content bg-dark">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addHospitalModalLabel"><i class="fas fa-hospital me-2"></i>Add New Hospital</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="POST" action="{{ url_for('admin.add_hospital') }}" class="needs-validation" novalidate>
+                        {{ form.hidden_tag() }}
+                        
+                        <div class="mb-3">
+                            <label for="name" class="form-label">{{ form.name.label }}</label>
+                            {{ form.name(class="form-control", placeholder="Enter hospital name") }}
+                            {% if form.name.errors %}
+                                {% for error in form.name.errors %}
+                                    <div class="text-danger">{{ error }}</div>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="address" class="form-label">{{ form.address.label }}</label>
+                            {{ form.address(class="form-control", placeholder="Enter hospital address") }}
+                            {% if form.address.errors %}
+                                {% for error in form.address.errors %}
+                                    <div class="text-danger">{{ error }}</div>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                        
+                        <div class="row mb-3">
+                            <div class="col-md-4 mb-3 mb-md-0">
+                                <label for="city" class="form-label">{{ form.city.label }}</label>
+                                {{ form.city(class="form-control", placeholder="Enter city") }}
+                                {% if form.city.errors %}
+                                    {% for error in form.city.errors %}
+                                        <div class="text-danger">{{ error }}</div>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                            <div class="col-md-4 mb-3 mb-md-0">
+                                <label for="state" class="form-label">{{ form.state.label }}</label>
+                                {{ form.state(class="form-control", placeholder="Enter state") }}
+                                {% if form.state.errors %}
+                                    {% for error in form.state.errors %}
+                                        <div class="text-danger">{{ error }}</div>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                            <div class="col-md-4">
+                                <label for="country" class="form-label">{{ form.country.label }}</label>
+                                {{ form.country(class="form-control", placeholder="Enter country") }}
+                                {% if form.country.errors %}
+                                    {% for error in form.country.errors %}
+                                        <div class="text-danger">{{ error }}</div>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="phone" class="form-label">{{ form.phone.label }}</label>
+                            {{ form.phone(class="form-control", placeholder="Enter hospital phone number") }}
+                            {% if form.phone.errors %}
+                                {% for error in form.phone.errors %}
+                                    <div class="text-danger">{{ error }}</div>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                        
+                        <div class="d-grid">
+                            {{ form.submit(class="btn btn-primary") }}
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

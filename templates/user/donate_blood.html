@@ -1,0 +1,169 @@
+{% extends 'layout.html' %}
+
+{% block title %}Donate Blood - Organ & Blood Donation System{% endblock %}
+
+{% block content %}
+<section class="container py-4">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card bg-dark animate-on-scroll" data-animation="fade-in">
+                <div class="card-header bg-danger text-white">
+                    <h3 class="mb-0"><i class="fas fa-tint me-2"></i>Donate Blood</h3>
+                </div>
+                <div class="card-body">
+                    <div class="alert alert-info mb-4" role="alert">
+                        <h5 class="alert-heading">Important Information</h5>
+                        <p>Thank you for your interest in blood donation. Your decision to donate can save up to 3 lives.</p>
+                        <hr>
+                        <p class="mb-0">After submitting this form, our team will review your application and contact you for further steps.</p>
+                    </div>
+                    
+                    <form method="POST" action="{{ url_for('user.donate_blood') }}" class="needs-validation" novalidate>
+                        {{ form.hidden_tag() }}
+                        
+                        <div class="mb-3">
+                            <label for="blood_group" class="form-label">{{ form.blood_group.label }}</label>
+                            {{ form.blood_group(class="form-select") }}
+                            {% if form.blood_group.errors %}
+                                {% for error in form.blood_group.errors %}
+                                    <div class="text-danger">{{ error }}</div>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="quantity_ml" class="form-label">{{ form.quantity_ml.label }}</label>
+                            {{ form.quantity_ml(class="form-control", type="number", min="300", max="500") }}
+                            {% if form.quantity_ml.errors %}
+                                {% for error in form.quantity_ml.errors %}
+                                    <div class="text-danger">{{ error }}</div>
+                                {% endfor %}
+                            {% endif %}
+                            <div class="form-text">Standard blood donation is typically between 300-500 ml.</div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="additional_info" class="form-label">{{ form.additional_info.label }}</label>
+                            {{ form.additional_info(class="form-control", rows="4", placeholder="Enter any additional information that might be relevant to your donation...") }}
+                            {% if form.additional_info.errors %}
+                                {% for error in form.additional_info.errors %}
+                                    <div class="text-danger">{{ error }}</div>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                        
+                        <div class="form-check mb-4">
+                            <input class="form-check-input" type="checkbox" id="confirmCheck" required>
+                            <label class="form-check-label" for="confirmCheck">
+                                I confirm that I am at least 18 years old, weigh at least 110 pounds, and am in good health.
+                            </label>
+                            <div class="invalid-feedback">
+                                You must confirm your eligibility before submitting.
+                            </div>
+                        </div>
+                        
+                        <div class="d-grid gap-2">
+                            {{ form.submit(class="btn btn-danger btn-lg") }}
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Blood Donation Information -->
+    <div class="row mt-4">
+        <div class="col-md-8 offset-md-2">
+            <div class="card bg-dark animate-on-scroll" data-animation="slide-in-up">
+                <div class="card-header bg-info">
+                    <h4 class="mb-0"><i class="fas fa-info-circle me-2"></i>About Blood Donation</h4>
+                </div>
+                <div class="card-body">
+                    <h5>Blood Type Compatibility</h5>
+                    <div class="table-responsive mb-4">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr class="text-center">
+                                    <th>Blood Type</th>
+                                    <th>Can Donate To</th>
+                                    <th>Can Receive From</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>O-</td>
+                                    <td>All blood types</td>
+                                    <td>O-</td>
+                                </tr>
+                                <tr>
+                                    <td>O+</td>
+                                    <td>O+, A+, B+, AB+</td>
+                                    <td>O-, O+</td>
+                                </tr>
+                                <tr>
+                                    <td>A-</td>
+                                    <td>A-, A+, AB-, AB+</td>
+                                    <td>O-, A-</td>
+                                </tr>
+                                <tr>
+                                    <td>A+</td>
+                                    <td>A+, AB+</td>
+                                    <td>O-, O+, A-, A+</td>
+                                </tr>
+                                <tr>
+                                    <td>B-</td>
+                                    <td>B-, B+, AB-, AB+</td>
+                                    <td>O-, B-</td>
+                                </tr>
+                                <tr>
+                                    <td>B+</td>
+                                    <td>B+, AB+</td>
+                                    <td>O-, O+, B-, B+</td>
+                                </tr>
+                                <tr>
+                                    <td>AB-</td>
+                                    <td>AB-, AB+</td>
+                                    <td>O-, A-, B-, AB-</td>
+                                </tr>
+                                <tr>
+                                    <td>AB+</td>
+                                    <td>AB+</td>
+                                    <td>All blood types</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <h5>Blood Donation Process</h5>
+                    <ol>
+                        <li>Submit your donation intent through this form</li>
+                        <li>Our medical team reviews your application</li>
+                        <li>We'll contact you to schedule an appointment</li>
+                        <li>You'll receive an OTP for verification at the donation center</li>
+                        <li>The donation process takes about 10-15 minutes</li>
+                        <li>Your donated blood is tested, processed, and distributed to those in need</li>
+                    </ol>
+                    
+                    <h5>Eligibility Requirements</h5>
+                    <ul>
+                        <li>You must be at least 18 years old</li>
+                        <li>You should weigh at least 110 pounds (50 kg)</li>
+                        <li>You should be in good general health</li>
+                        <li>You must wait at least 56 days between whole blood donations</li>
+                        <li>You should not have any acute infections or illnesses</li>
+                    </ul>
+                    
+                    <h5>Benefits of Donating Blood</h5>
+                    <ul>
+                        <li>Save up to 3 lives with just one donation</li>
+                        <li>Free mini-physical examination (blood pressure, pulse, temperature)</li>
+                        <li>Reduction in risk of heart disease and cancer</li>
+                        <li>Stimulation of blood cell production</li>
+                        <li>Sense of contributing to your community and helping others in need</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

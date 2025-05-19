@@ -1,0 +1,119 @@
+{% extends 'layout.html' %}
+
+{% block title %}Update Request Status - Organ & Blood Donation System{% endblock %}
+
+{% block content %}
+<section class="container py-4">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card bg-dark animate-on-scroll" data-animation="fade-in">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="mb-0"><i class="fas fa-edit me-2"></i>Update Request Status</h3>
+                </div>
+                <div class="card-body">
+                    <div class="alert alert-info mb-4">
+                        <h5 class="alert-heading">Request Information</h5>
+                        <p class="mb-0"><strong>Requester:</strong> {{ request.requester.username }}</p>
+                        <p class="mb-0"><strong>Organ Type:</strong> {{ request.organ_type|capitalize }}</p>
+                        <p class="mb-0"><strong>Blood Group:</strong> {{ request.blood_group }}</p>
+                        <p class="mb-0"><strong>Urgency Level:</strong> {{ request.urgency_level|capitalize }}</p>
+                        <p class="mb-0"><strong>Current Status:</strong> {{ request.status|capitalize }}</p>
+                        <p class="mb-0"><strong>Date Requested:</strong> {{ request.date_requested.strftime('%Y-%m-%d') }}</p>
+                        
+                        {% if request.additional_info %}
+                        <hr>
+                        <p class="mb-0"><strong>Additional Information:</strong> {{ request.additional_info }}</p>
+                        {% endif %}
+                    </div>
+                    
+                    {% if request.matched_donation %}
+                    <div class="alert alert-success mb-4">
+                        <h5 class="alert-heading">Matched Donation</h5>
+                        <p class="mb-0"><strong>Donor:</strong> {{ request.matched_donation.donor.username }}</p>
+                        <p class="mb-0"><strong>Organ Type:</strong> {{ request.matched_donation.organ_type|capitalize }}</p>
+                        <p class="mb-0"><strong>Blood Group:</strong> {{ request.matched_donation.blood_group }}</p>
+                        <p class="mb-0"><strong>Donation Status:</strong> {{ request.matched_donation.status|capitalize }}</p>
+                    </div>
+                    {% endif %}
+                    
+                    <form method="POST" action="{{ url_for('doctor.update_request_status', request_id=request.id) }}">
+                        {{ form.hidden_tag() }}
+                        
+                        <div class="mb-3">
+                            <label for="status" class="form-label">{{ form.status.label }}</label>
+                            {{ form.status(class="form-select") }}
+                            {% if form.status.errors %}
+                                {% for error in form.status.errors %}
+                                    <div class="text-danger">{{ error }}</div>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                        
+                        <div class="d-flex justify-content-between mt-4">
+                            <a href="{{ url_for('doctor.organ_requests') }}" class="btn btn-secondary">
+                                <i class="fas fa-arrow-left me-1"></i> Back to Requests
+                            </a>
+                            {{ form.submit(class="btn btn-primary") }}
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Status Information -->
+    <div class="row mt-4">
+        <div class="col-md-8 offset-md-2">
+            <div class="card bg-dark animate-on-scroll" data-animation="slide-in-up">
+                <div class="card-header bg-info">
+                    <h4 class="mb-0"><i class="fas fa-info-circle me-2"></i>Status Descriptions</h4>
+                </div>
+                <div class="card-body">
+                    <div class="list-group list-group-flush bg-dark">
+                        <div class="list-group-item bg-dark">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">
+                                    <span class="badge bg-warning me-2">Pending</span>
+                                    Initial Status
+                                </h5>
+                            </div>
+                            <p class="mb-1">The request is being processed but no action has been taken yet. This is the initial state of all requests.</p>
+                        </div>
+                        <div class="list-group-item bg-dark">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">
+                                    <span class="badge bg-info me-2">Approved</span>
+                                    Matched Status
+                                </h5>
+                            </div>
+                            <p class="mb-1">The request has been approved and matched with a suitable organ donor. Set this status when a match is found and the process is moving forward.</p>
+                        </div>
+                        <div class="list-group-item bg-dark">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">
+                                    <span class="badge bg-success me-2">Fulfilled</span>
+                                    Completed Status
+                                </h5>
+                            </div>
+                            <p class="mb-1">The request has been successfully fulfilled with a donation. Set this status after successful transplantation has occurred.</p>
+                        </div>
+                        <div class="list-group-item bg-dark">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">
+                                    <span class="badge bg-danger me-2">Unavailable</span>
+                                    Rejection Status
+                                </h5>
+                            </div>
+                            <p class="mb-1">The requested organ is not available or the request cannot be fulfilled due to medical or logistical reasons. Set this status when no suitable match can be found or when other circumstances prevent fulfillment.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="alert alert-warning mt-4">
+                        <i class="fas fa-exclamation-triangle me-2"></i> <strong>Important Note:</strong> Status changes are logged in the system. Please ensure you are updating the status accurately based on the current situation. Once a status is changed to "Fulfilled" or "Unavailable", it typically represents a final state.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

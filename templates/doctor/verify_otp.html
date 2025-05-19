@@ -1,0 +1,137 @@
+{% extends 'layout.html' %}
+
+{% block title %}Verify Organ Collection - Organ & Blood Donation System{% endblock %}
+
+{% block content %}
+<section class="container py-4">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card bg-dark animate-on-scroll" data-animation="fade-in">
+                <div class="card-header bg-success text-white">
+                    <h3 class="mb-0"><i class="fas fa-check-circle me-2"></i>Verify Organ Collection</h3>
+                </div>
+                <div class="card-body">
+                    <div class="alert alert-info mb-4">
+                        <h5 class="alert-heading">Donation Information</h5>
+                        <p class="mb-0"><strong>Donor:</strong> {{ donation.donor.username }}</p>
+                        <p class="mb-0"><strong>Organ Type:</strong> {{ donation.organ_type|capitalize }}</p>
+                        <p class="mb-0"><strong>Blood Group:</strong> {{ donation.blood_group }}</p>
+                        <p class="mb-0"><strong>Date Added:</strong> {{ donation.date_added.strftime('%Y-%m-%d') }}</p>
+                    </div>
+                    
+                    <div class="text-center mb-4">
+                        <i class="fas fa-mobile-alt fa-5x text-success mb-3"></i>
+                        <h4>OTP Verification</h4>
+                        <p>Please ask the donor for the OTP sent to their email/phone to verify this collection.</p>
+                    </div>
+                    
+                    <form method="POST" action="{{ url_for('doctor.verify_collection', donation_id=donation.id) }}">
+                        {{ form.hidden_tag() }}
+                        
+                        <div class="mb-4">
+                            <label for="otp" class="form-label">{{ form.otp.label }}</label>
+                            {{ form.otp(class="form-control form-control-lg text-center", placeholder="Enter 6-digit OTP") }}
+                            {% if form.otp.errors %}
+                                {% for error in form.otp.errors %}
+                                    <div class="text-danger">{{ error }}</div>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                        
+                        <div class="d-grid mb-3">
+                            {{ form.submit(class="btn btn-success btn-lg") }}
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer">
+                    <div class="d-flex justify-content-between">
+                        <a href="{{ url_for('doctor.organ_collections') }}" class="btn btn-secondary">
+                            <i class="fas fa-arrow-left me-1"></i> Back to Collections
+                        </a>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#donorInfoModal">
+                            <i class="fas fa-info-circle me-1"></i> Donor Details
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Donor Information Modal -->
+    <div class="modal fade" id="donorInfoModal" tabindex="-1" aria-labelledby="donorInfoModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content bg-dark">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="donorInfoModalLabel">Donor Information</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center mb-3">
+                        <i class="fas fa-user-circle fa-5x text-primary mb-2"></i>
+                        <h4>{{ donation.donor.username }}</h4>
+                    </div>
+                    
+                    <div class="list-group list-group-flush bg-dark">
+                        <div class="list-group-item bg-dark d-flex justify-content-between">
+                            <span><i class="fas fa-envelope me-2"></i> Email:</span>
+                            <span>{{ donation.donor.email }}</span>
+                        </div>
+                        <div class="list-group-item bg-dark d-flex justify-content-between">
+                            <span><i class="fas fa-phone me-2"></i> Phone:</span>
+                            <span>{{ donation.donor.phone }}</span>
+                        </div>
+                        <div class="list-group-item bg-dark d-flex justify-content-between">
+                            <span><i class="fas fa-map-marker-alt me-2"></i> Address:</span>
+                            <span>{{ donation.donor.address }}</span>
+                        </div>
+                    </div>
+                    
+                    {% if donation.additional_info %}
+                    <div class="mt-3">
+                        <h5>Additional Information</h5>
+                        <p>{{ donation.additional_info }}</p>
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- OTP Verification Information -->
+    <div class="row mt-4">
+        <div class="col-md-8 offset-md-2">
+            <div class="card bg-dark animate-on-scroll" data-animation="slide-in-up">
+                <div class="card-header bg-info">
+                    <h4 class="mb-0"><i class="fas fa-info-circle me-2"></i>About OTP Verification</h4>
+                </div>
+                <div class="card-body">
+                    <h5>Why OTP Verification?</h5>
+                    <p>The One-Time Password (OTP) verification system ensures that:</p>
+                    <ul>
+                        <li>The donor is legitimately present for the donation</li>
+                        <li>The donation is voluntary and consensual</li>
+                        <li>There is a digital trail of the donation process</li>
+                        <li>The system maintains complete transparency</li>
+                    </ul>
+                    
+                    <h5>Next Steps After Verification</h5>
+                    <ol>
+                        <li>The system will mark the donation as collected</li>
+                        <li>The donation status will be updated automatically</li>
+                        <li>The admin will be notified of the successful collection</li>
+                        <li>The donor will receive a confirmation email/message</li>
+                        <li>If the donation is already matched to a request, the process will continue to fulfillment</li>
+                    </ol>
+                    
+                    <div class="alert alert-warning mt-3">
+                        <i class="fas fa-exclamation-triangle me-2"></i> <strong>Important:</strong> Ensure that all medical protocols are followed during the collection process. The OTP verification is only one part of the overall procedure.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
